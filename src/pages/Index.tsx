@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import CourseCard from "@/components/CourseCard";
 import Footer from "@/components/Footer";
+import robertImage from "@/assets/robert-katz.png";
 
 const Index = () => {
   const courses = [
@@ -102,6 +103,40 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Hero />
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-4xl">
+          <article className="bg-card rounded-2xl p-8 md:p-12 shadow-xl border border-border animate-fade-in">
+            {/* Profile Image */}
+            <div className="flex justify-center mb-8">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-spiritual rounded-full blur-xl opacity-30"></div>
+                <img 
+                  src={robertImage} 
+                  alt="רוברט כץ - מנטור רוחני ומנחה מדיטציה"
+                  className="relative w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-primary/20 shadow-2xl"
+                />
+              </div>
+            </div>
+
+            {/* Title */}
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
+              רוברט כץ
+            </h2>
+
+            {/* Description */}
+            <div className="text-center space-y-4">
+              <p className="text-xl md:text-2xl text-foreground leading-relaxed">
+                מנטור רוחני, מנחה קבוצות וצוותי חינוך
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                מרצה ומנחה קורסי התפתחות ומדיטציה ע״פ לוגיקת הלב
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
       
       <section id="courses" className="py-20 px-4">
         <div className="container mx-auto">
