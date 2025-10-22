@@ -5,97 +5,97 @@ import Footer from "@/components/Footer";
 const Index = () => {
   const courses = [
     {
-      title: "Logic of the Heart",
-      description: "In this course, we will learn the guiding technique that forms the foundation of the Meditation of Recollection. We will explore the emotional, energetic, and physical elements — the automatic patterns that influence us and prevent our liberation. We will focus on learning how to balance and release automatic responses, experience freedom, truth, and connection to the higher emotion.",
+      title: "לוג'יקת הלב",
+      description: "בקורס זה נלמד את טכניקת ההנחיה, שהיא הבסיס למדיטציית ההיזכרות. נכיר את האלמנט האימוציונלי, האנרגטי והפיזי, הם האוטומטים המשפיעים עלינו ומונעים מאיתנו להשתחרר. נתמקד בללמוד לאזן ושחרר אוטומטים, חוויית חופש, האמת והתחברות אל הרגש הגבוה.",
       cycles: [
         {
-          name: "Winter 2025 Cycle",
-          schedule: "Fridays, once a week, 15:00–17:00",
+          name: "מועד חורף 2025",
+          schedule: "ימי שישי אחת לשבוע 15:00–17:00",
           opening: "22/12/25",
           closing: "24/1/25"
         },
         {
-          name: "Winter 2025 Cycle",
-          schedule: "Sundays, once a week, 19:30–21:30",
+          name: "מועד חורף 2025",
+          schedule: "ימי ראשון אחת לשבוע 19:30–21:30",
           opening: "23/12/25",
           closing: "25/2/25"
         },
         {
-          name: "Winter 2026 Cycle",
-          schedule: "Coming Soon",
-          opening: "TBA",
-          closing: "TBA"
+          name: "מועד חורף 2026",
+          schedule: "בקרוב",
+          opening: "יפורסם בהמשך",
+          closing: "יפורסם בהמשך"
         },
         {
-          name: "Spring 2026 Cycle",
-          schedule: "Coming Soon",
-          opening: "TBA",
-          closing: "TBA"
+          name: "מועד אביב 2026",
+          schedule: "בקרוב",
+          opening: "יפורסם בהמשך",
+          closing: "יפורסם בהמשך"
         }
       ],
-      price: "1490 NIS"
+      price: "1490 ש\"ח"
     },
     {
-      title: "Meditation of Recollection – Dialogia",
-      description: "Meditation through dialogue with the chain of continuity — the source and the inner equality of our existence. This is a meditation for consciousness development during dream-time, waking-time, and hybrid states in between. We will learn the tools of Dialogia — consciousness-inspired guidance from a high emotional frequency, also outside of meditation. We will learn new techniques, including: Logic of Desire and Work with Chains.",
+      title: "מדיטציית היזכרות – דיאולוגיה",
+      description: "מדיטציה בעשייה בדיאלוג עם שרשרת-הרצף, המקור ושוויון האמצעות הפנימי שלנו ובנו. זו מדיטציה להתפתחות תודעתית בזמן-חלום, בזמן-ערות ובזמן משלב בין השניים. נלמד את הכלים של דיאולוגיה – השראה תודעתית מגובה רגש-חיים, גם מחוץ למדיטציה. נלמד טכניקות חדשות: לוג'יקה של הרצון, עבודה עם שרשרות.",
       cycles: [
         {
-          name: "Winter 2025 Cycle",
-          schedule: "Mondays, 19:30–21:30",
+          name: "מועד חורף 2025",
+          schedule: "ימי שני ערב 19:30–21:30",
           opening: "22/12/25",
           closing: "24/2/25"
         },
         {
-          name: "Winter 2025 Cycle",
-          schedule: "Tuesdays, 19:30–21:30",
+          name: "מועד חורף 2025",
+          schedule: "ימי שלישי ערב 19:30–21:30",
           opening: "22/12/25",
           closing: "24/2/25"
         },
         {
-          name: "Summer 2026 Cycle",
-          schedule: "Thursdays, 18:00–20:00",
+          name: "מועד קיץ 2026",
+          schedule: "ימי חמישי ערב 18:00–20:00",
           opening: "17/03/26",
           closing: "19/06/26"
         },
         {
-          name: "Spring 2026 Cycle",
-          schedule: "Coming Soon",
-          opening: "TBA",
-          closing: "TBA"
+          name: "מועד אביב 2026",
+          schedule: "בקרוב",
+          opening: "יפורסם בהמשך",
+          closing: "יפורסם בהמשך"
         }
       ],
-      price: "1490 NIS"
+      price: "1490 ש\"ח"
     },
     {
-      title: "The Adventures – The Knights of the Round Table",
-      description: "When we enter meditation, something of the peaceful child within awakens — but we also begin to encounter phenomena that emerge from the meta world — chains and illusions that can lead us astray. We will learn the secrets of the voice as a gateway to consciousness — inspiration from high emotional awareness, even outside meditation. We will learn new techniques, including: Logic of Desire and Work with Chains.",
+      title: "ההפתקאות – אברי השולחן העגול",
+      description: "עם שנכנס מדיטציה, משהו לילד השליו בנו בזמן התגלה, אבל במקביל גם את התופעות מאשר יוצאים לעולם המטאמי – שרשרות והאילוזיות הולכים לאיבוד. סודות הקול מקדמת לתודעה – השראה ריפות תודעה בגובה רגש חיים–אדם, גם מחוץ למדיטציה. נלמד טכניקות חדשות: לוג'יקה של רצון, עבודה עם שרשרות.",
       cycles: [
         {
-          name: "Winter 2025 Cycle",
-          schedule: "Fridays, 09:00–11:00",
+          name: "מועד חורף 2025",
+          schedule: "ימי שישי בוקר 9:00–11:00",
           opening: "20/12/25",
           closing: "22/2/25"
         },
         {
-          name: "Winter 2025 Cycle",
-          schedule: "Wednesdays, 19:30–21:30",
+          name: "מועד חורף 2025",
+          schedule: "ימי רביעי ערב 19:30–21:30",
           opening: "22/10/25",
           closing: "24/12/25"
         },
         {
-          name: "Winter 2026 Cycle",
-          schedule: "Coming Soon",
-          opening: "TBA",
-          closing: "TBA"
+          name: "מועד חורף 2026",
+          schedule: "בקרוב",
+          opening: "יפורסם בהמשך",
+          closing: "יפורסם בהמשך"
         },
         {
-          name: "Spring 2026 Cycle",
-          schedule: "Coming Soon",
-          opening: "TBA",
-          closing: "TBA"
+          name: "מועד אביב 2026",
+          schedule: "בקרוב",
+          opening: "יפורסם בהמשך",
+          closing: "יפורסם בהמשך"
         }
       ],
-      price: "1490 NIS"
+      price: "1490 ש\"ח"
     }
   ];
 
@@ -107,10 +107,13 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Courses
+              תכנית הקורסים
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Advanced meditation programs for consciousness development and spiritual growth
+              קורסי מדיטציה מתקדמים להתפתחות תודעתית וצמיחה רוחנית
+            </p>
+            <p className="text-lg text-muted-foreground mt-2">
+              2026 – 2025
             </p>
           </div>
 
