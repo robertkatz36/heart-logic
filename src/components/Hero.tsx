@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-4 py-20 text-center">
         <div className="animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
-            לוג'יקת הלב
+            לוגיקת הלב
           </h1>
           <p className="text-2xl md:text-3xl text-white/95 mb-6 font-semibold">
             המרכז להתפתחות האדם
