@@ -26,10 +26,10 @@ const Hero = () => {
               לקורסים
             </a>
             <a 
-              href="#contact" 
+              href="/about" 
               className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/30"
             >
-              צור קשר
+              אודות
             </a>
           </div>
         </div>
