@@ -88,3 +88,56 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Mesh Gradient Background */
+.mesh-gradient {
+  position: relative;
+  background: 
+    radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.25) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 0.35) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 0.35) 0px, transparent 50%);
+  background-color: hsl(var(--background));
+}
+
+/* Alternative: More pastel, softer version */
+.mesh-gradient-soft {
+  position: relative;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 200, 180, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(160, 220, 255, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(255, 160, 200, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 10% 60%, rgba(200, 180, 255, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 220, 180, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(180, 230, 255, 0.35) 0%, transparent 45%);
+  background-color: hsl(var(--background));
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+/* Animated version (optional) */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%, 100% 0%, 50% 100%, 0% 50%, 100% 100%, 30% 50%, 80% 50%;
+  }
+  50% {
+    background-position: 100% 50%, 0% 100%, 50% 0%, 100% 50%, 0% 0%, 70% 50%, 20% 50%;
+  }
+}
+
+.mesh-gradient-animated {
+  position: relative;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 200, 180, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(160, 220, 255, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(255, 160, 200, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 10% 60%, rgba(200, 180, 255, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 220, 180, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(180, 230, 255, 0.35) 0%, transparent 45%);
+  background-color: hsl(var(--background));
+  background-size: 200% 200%;
+  animation: gradient-shift 20s ease infinite;
+}
