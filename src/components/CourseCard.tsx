@@ -18,10 +18,10 @@ interface CourseCardProps {
 
 const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, onRegister }: CourseCardProps) => {
   const handleRegister = () => {
-    // יצירת מחרוזת עם כל המחזורים
+    // יצירת מחרוזת עם כל המחזורים כולל תאריכים
     const cycleInfo = cycles
       .filter(cycle => cycle.schedule && cycle.opening)
-      .map(cycle => `${cycle.name} - ${cycle.schedule}`)
+      .map(cycle => `${cycle.name} - ${cycle.schedule} (${cycle.opening})`)
       .join(" | ");
 
     if (onRegister) {

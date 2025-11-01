@@ -1,4 +1,4 @@
-import { useState, useId, forwardRef, useImperativeHandle, useRef } from "react";
+import { useState, useId, forwardRef, useImperativeHandle, useRef, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,8 +14,19 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, User, Calendar } from "lucide-react";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 
+interface Cycle {
+  name: string;
+  schedule?: string;
+  opening?: string;
+}
+
+interface Course {
+  title: string;
+  cycles: Cycle[];
+}
+
 interface ContactFormProps {
-  courses: string[];
+  courses: Course[];
 }
 
 export interface ContactFormRef {
@@ -35,6 +46,22 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
     course: "",
     cycle: "",
   });
+
+  // Get available cycles for selected course
+  const availableCycles = useMemo(() => {
+    if (!formData.course) return [];
+    const selectedCourse = courses.find(c => c.title === formData.course);
+    if (!selectedCourse) return [];
+    return selectedCourse.cycles.filter(cycle => cycle.schedule && cycle.opening);
+  }, [formData.course, courses]);
+
+  // Format cycle display text
+  const formatCycleText = (cycle: Cycle) => {
+    if (cycle.schedule && cycle.opening) {
+      return `${cycle.name} - ${cycle.schedule} (${cycle.opening})`;
+    }
+    return cycle.name;
+  };
 
   useImperativeHandle(ref, () => ({
     fillForm: (course: string, cycle?: string) => {
@@ -154,15 +181,15 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
             </Label>
             <Select
               value={formData.course}
-              onValueChange={(value) => setFormData({ ...formData, course: value })}
+              onValueChange={(value) => setFormData({ ...formData, course: value, cycle: "" })}
             >
               <SelectTrigger className="text-right" dir="rtl">
                 <SelectValue placeholder="בחר קורס" />
               </SelectTrigger>
               <SelectContent>
                 {courses.map((course) => (
-                  <SelectItem key={course} value={course} className="text-right">
-                    {course}
+                  <SelectItem key={course.title} value={course.title} className="text-right">
+                    {course.title}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -175,15 +202,25 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
               <span>מחזור מבוקש (אופציונלי)</span>
               <Calendar className="w-4 h-4 text-primary" />
             </Label>
-            <Input
-              id={cycleId}
-              type="text"
-              placeholder="לדוגמה: מועד חורף 2025 - ימי שישי"
+            <Select
               value={formData.cycle}
-              onChange={(e) => setFormData({ ...formData, cycle: e.target.value })}
-              className="text-right"
-              dir="rtl"
-            />
+              onValueChange={(value) => setFormData({ ...formData, cycle: value })}
+              disabled={!formData.course || availableCycles.length === 0}
+            >
+              <SelectTrigger className="text-right" dir="rtl" id={cycleId}>
+                <SelectValue placeholder={formData.course ? "בחר מחזור" : "בחר קורס קודם"} />
+              </SelectTrigger>
+              <SelectContent>
+                {availableCycles.map((cycle, index) => {
+                  const cycleText = formatCycleText(cycle);
+                  return (
+                    <SelectItem key={`${cycle.name}-${index}`} value={cycleText} className="text-right">
+                      {cycleText}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* כפתור שליחה */}

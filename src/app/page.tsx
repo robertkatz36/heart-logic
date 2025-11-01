@@ -140,7 +140,7 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
-          <ContactForm ref={contactFormRef} courses={courses.map(course => course.title)} />
+          <ContactForm ref={contactFormRef} courses={courses} />
         </div>
       </section>
 
