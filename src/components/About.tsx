@@ -1,5 +1,4 @@
 import Image from "next/image";
-import robertImage from "@/assets/robert-katz.png";
 
 const About = () => {
   return (
@@ -11,7 +10,7 @@ const About = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-spiritual rounded-full blur-xl opacity-30"></div>
               <Image
-                src={robertImage}
+                src="/robert-katz.webp"
                 alt="רוברט כץ - מנטור רוחני ומנחה מדיטציה"
                 width={256}
                 height={256}

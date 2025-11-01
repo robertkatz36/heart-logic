@@ -23,7 +23,7 @@ const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      
+
       // Update active section based on scroll position
       const sections = navItems.map(item => item.href.substring(1));
       const scrollPosition = window.scrollY + 100;
@@ -66,7 +66,7 @@ const NavBar = () => {
             className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
             <Image
-              src="/heart.png"
+              src="/heart.webp"
               alt="לוגיקת הלב"
               width={32}
               height={32}
@@ -117,7 +117,7 @@ const NavBar = () => {
                   const sectionId = item.href.substring(1);
                   const isActive = activeSection === sectionId;
                   const isCTA = item.href === "#contact";
-                  
+
                   if (isCTA) {
                     return (
                       <Button
@@ -133,7 +133,7 @@ const NavBar = () => {
                       </Button>
                     );
                   }
-                  
+
                   return (
                     <button
                       key={item.href}
