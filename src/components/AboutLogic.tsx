@@ -2,7 +2,7 @@ const AboutLogic = () => {
   return (
     <section id="about-logic" className="relative py-20 px-4 z-10">
       <div className="container relative z-10 mx-auto max-w-4xl">
-        <article className="bg-card rounded-2xl p-8 md:p-12 shadow-xl border border-border animate-fade-in">
+        <article className="bg-card/50 rounded-2xl p-8 md:p-12 shadow-xl border border-border animate-fade-in backdrop-blur-sm">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
             אודות לוגיקת הלב
           </h2>
