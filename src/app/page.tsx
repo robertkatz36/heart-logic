@@ -104,10 +104,26 @@ export default function HomePage() {
   return (
     <div className="min-h-screen mesh-gradient-soft">
       <NavBar />
-      <Hero />
 
-      {/* About לוגיקת הלב Section */}
-      <AboutLogic />
+      {/* Shared video background for Hero and AboutLogic */}
+      <div className="relative overflow-hidden">
+        {/* Background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-background.mp4" type="video/mp4" />
+        </video>
+
+        {/* White overlay with 0.5 transparency */}
+        <div className="absolute inset-0 bg-white/50 z-[1]"></div>
+
+        <Hero />
+        <AboutLogic />
+      </div>
 
       {/* About Section */}
       <About />

@@ -3,13 +3,20 @@ import { Mail, Phone } from "lucide-react";
 const Footer = () => {
   return (
     <footer id="contact" className="relative text-white py-12 overflow-hidden">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/hero-background.png)'
-        }}
-      />
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/hero-background.mp4" type="video/mp4" />
+      </video>
+
+      {/* White overlay with 0.5 transparency */}
+      <div className="absolute inset-0 bg-white/50 z-[1]"></div>
+
       <div className="container relative z-10 mx-auto px-4">
         <div className="text-center space-y-4 text-muted-foreground">
           <p className="text-lg opacity-90 flex items-center justify-center gap-2">
