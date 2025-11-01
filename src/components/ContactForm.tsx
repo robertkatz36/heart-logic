@@ -50,7 +50,7 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
     },
   }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name || !formData.phone || !formData.course) {
@@ -62,21 +62,44 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
       return;
     }
 
-    // כאן אפשר להוסיף שליחה לשרת או שירות דוא"ל
-    console.log("Form submitted:", formData);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          course: formData.course,
+          cycle: formData.cycle || "",
+        }),
+      });
 
-    toast({
-      title: "הטופס נשלח בהצלחה!",
-      description: "ניצור איתך קשר בהקדם",
-    });
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
 
-    // איפוס הטופס
-    setFormData({
-      name: "",
-      phone: "",
-      course: "",
-      cycle: "",
-    });
+      toast({
+        title: "הטופס נשלח בהצלחה!",
+        description: "ניצור איתך קשר בהקדם",
+      });
+
+      // איפוס הטופס
+      setFormData({
+        name: "",
+        phone: "",
+        course: "",
+        cycle: "",
+      });
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      toast({
+        title: "שגיאה בשליחת הטופס",
+        description: "אנא נסה שוב מאוחר יותר",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

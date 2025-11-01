@@ -60,9 +60,27 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Resend Setup (for Contact Form)
+
+The contact form uses Resend to send emails. To set it up:
+
+1. Sign up at [Resend](https://resend.com/) (free tier: 3,000 emails/month)
+2. Create an API key in the Resend dashboard
+3. Add a domain or use the default `onboarding@resend.dev` for testing
+4. Create a `.env.local` file in the root directory:
+   ```sh
+   RESEND_API_KEY=re_your_api_key_here
+   CONTACT_EMAIL=your-email@example.com
+   ```
+5. Update `src/app/api/contact/route.ts` to change the `from` email address after verifying your domain
+
+**Note**: For production, verify your domain in Resend and update the `from` field in the API route.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/4f57ead6-9975-4968-acfb-4bdd3b0d4e60) and click on Share -> Publish.
+
+**Note**: Don't forget to add your Resend environment variables (`RESEND_API_KEY` and `CONTACT_EMAIL`) in your hosting platform (Vercel, etc.)
 
 ## Can I connect a custom domain to my Lovable project?
 
