@@ -2,28 +2,37 @@ import { Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-gradient-spiritual text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="text-center space-y-4">
-          <p className="text-lg opacity-90">
-            הקורסים יתקיימו בזום ויקלסיטי
+    <footer id="contact" className="relative text-white py-12 overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/hero-background.png)'
+        }}
+      />
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="text-center space-y-4 text-muted-foreground">
+          <p className="text-lg opacity-90 flex items-center justify-center gap-2">
+            הקורסים יתקיימו ב<a href="https://zoom.us/download" target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:opacity-80 transition-opacity">
+              <img src="https://st2.zoom.us/static/6.3.45448/image/new/topNav/Zoom_logo.svg" alt="Zoom" className="h-5 inline-block" />
+            </a>
           </p>
-          
+
           <p className="text-base opacity-90">
-            לפרטים נוספים: רוברת
+            לפרטים נוספים:רוברט
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-white/90">
-            <a 
-              href="mailto:robertkatz36@gmail.com" 
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground">
+            <a
+              href="mailto:robertkatz36@gmail.com"
               className="flex items-center gap-2 hover:text-white transition-colors"
             >
               <span>robertkatz36@gmail.com</span>
               <Mail className="w-5 h-5" />
             </a>
-            
-            <a 
-              href="tel:052-5531155" 
+
+            <a
+              href="tel:052-5531155"
               className="flex items-center gap-2 hover:text-white transition-colors"
             >
               <span>052-5531155</span>
@@ -33,7 +42,7 @@ const Footer = () => {
 
           <div className="pt-6 border-t border-white/20 mt-8">
             <p className="text-sm opacity-75">
-              © {new Date().getFullYear()} לוג'יקת הלב. כל הזכויות שמורות.
+              © {new Date().getFullYear()} כל הזכויות שמורות.
             </p>
           </div>
         </div>

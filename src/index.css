@@ -42,10 +42,15 @@ All colors MUST be HSL.
     --gradient-start: 265 70% 50%;
     --gradient-mid: 240 60% 60%;
     --gradient-end: 280 65% 55%;
-    
+
     /* Hero gradient */
     --hero-gradient-start: 265 80% 60%;
     --hero-gradient-end: 240 70% 50%;
+    --color-1: oklch(66.2% 0.225 25.9);
+    --color-2: oklch(60.4% 0.26 302);
+    --color-3: oklch(69.6% 0.165 251);
+    --color-4: oklch(80.2% 0.134 225);
+    --color-5: oklch(90.7% 0.231 133);
   }
 
   .dark {
@@ -76,6 +81,14 @@ All colors MUST be HSL.
     --border: 260 30% 20%;
     --input: 260 30% 20%;
     --ring: 265 70% 60%;
+    --color-1: oklch(66.2% 0.225 25.9);
+    --color-2: oklch(60.4% 0.26 302);
+    --color-3: oklch(69.6% 0.165 251);
+    --color-4: oklch(80.2% 0.134 225);
+    --color-5: oklch(90.7% 0.231 133);
+  }
+  .theme {
+    --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
   }
 }
 
@@ -140,4 +153,37 @@ All colors MUST be HSL.
   background-color: hsl(var(--background));
   background-size: 200% 200%;
   animation: gradient-shift 20s ease infinite;
+}
+
+/* Infinite scroll animations for testimonials */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ---break---
+*/
+
+@theme inline {
+  @keyframes rainbow {
+  0% {
+    background-position: 0%;
+    }
+  100% {
+    background-position: 200%;
+    }
+  }
 }

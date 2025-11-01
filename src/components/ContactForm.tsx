@@ -81,7 +81,7 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
   return (
     <Card ref={cardRef} className="w-full max-w-2xl mx-auto shadow-xl border-2 animate-fade-in">
       <CardHeader className="text-center">
-        <CardTitle className="text-3xl md:text-4xl font-bold">צור קשר</CardTitle>
+        <CardTitle className="text-3xl md:text-4xl font-bold">הרשמה לקורס</CardTitle>
         <CardDescription className="text-lg">
           מעוניין להצטרף לקורס? השאר פרטים ונחזור אליך
         </CardDescription>

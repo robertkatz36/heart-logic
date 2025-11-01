@@ -2,13 +2,13 @@ import { Calendar, Clock } from "lucide-react";
 
 interface Cycle {
   name: string;
-  schedule: string;
-  opening: string;
-  closing: string;
+  schedule?: string;
+  opening?: string;
 }
 
 interface CourseCardProps {
   title: string;
+  subtitle?: string;
   description: string;
   cycles: Cycle[];
   price: string;
@@ -16,10 +16,11 @@ interface CourseCardProps {
   onRegister?: (courseTitle: string, cycleInfo: string) => void;
 }
 
-const CourseCard = ({ title, description, cycles, price, delay = 0, onRegister }: CourseCardProps) => {
+const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, onRegister }: CourseCardProps) => {
   const handleRegister = () => {
     // יצירת מחרוזת עם כל המחזורים
     const cycleInfo = cycles
+      .filter(cycle => cycle.schedule && cycle.opening)
       .map(cycle => `${cycle.name} - ${cycle.schedule}`)
       .join(" | ");
 
@@ -38,9 +39,11 @@ const CourseCard = ({ title, description, cycles, price, delay = 0, onRegister }
       }}
     >
       <div className="mb-4">
-        <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
-          קורס למתקדמים
-        </span>
+        {subtitle && (
+          <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
+            {subtitle}
+          </span>
+        )}
         <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
           {title}
         </h3>
@@ -57,17 +60,24 @@ const CourseCard = ({ title, description, cycles, price, delay = 0, onRegister }
         </div>
 
         <div className="space-y-3">
-          {cycles.map((cycle) => (
-            <div key={`${cycle.name}-${cycle.opening}-${cycle.closing}`} className="bg-muted/50 rounded-lg p-4 space-y-2">
-              <h4 className="font-semibold text-foreground text-right">{cycle.name}</h4>
-              <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                <div className="text-right flex-1">
-                  <p>{cycle.schedule}</p>
-                  <p className="text-xs">{cycle.opening} – פתיחה</p>
-                  <p className="text-xs">{cycle.closing} – סיום</p>
+          {cycles.map((cycle, index) => (
+            <div key={`${cycle.name}-${index}`} className="bg-muted/50 rounded-lg p-4 space-y-2 relative overflow-hidden">
+              {/* Ribbon לתאריך מוגדר */}
+              {cycle.schedule && cycle.opening && (
+                <div className="absolute top-2 -left-8 -rotate-45 bg-gradient-to-r from-primary to-primary/80 text-white py-0.5 px-8 text-xs font-bold shadow-lg z-10">
+                  פתוח
                 </div>
-                <Clock className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-              </div>
+              )}
+              <h4 className="font-semibold text-foreground text-right">{cycle.name}</h4>
+              {cycle.schedule && cycle.opening && (
+                <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <div className="text-right flex-1">
+                    <p>{cycle.schedule}</p>
+                    <p className="text-xs">{cycle.opening}</p>
+                  </div>
+                  <Clock className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -82,7 +92,7 @@ const CourseCard = ({ title, description, cycles, price, delay = 0, onRegister }
           >
             הרשמה
           </button>
-          <span className="text-2xl font-bold text-primary">ערך הקורס: {price}</span>
+          <span className="text-2xl font-bold text-primary">מחיר: {price}</span>
         </div>
       </div>
     </article>
