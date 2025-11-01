@@ -1,3 +1,4 @@
+import Image from "next/image";
 const Articles = () => {
   return (
     <section id="articles" className="py-20 px-4 bg-muted/30">
@@ -43,9 +44,11 @@ const Articles = () => {
             >
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden">
-                  <img
-                    src="https://adamolam.co.il/favicon.ico"
+                  <Image
+                    src="/adam-olam.png"
                     alt="adamolam favicon"
+                    width={32}
+                    height={32}
                     className="w-8 h-8 object-contain"
                   />
                 </div>
