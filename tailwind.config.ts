@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -127,6 +132,14 @@ export default {
             opacity: "1",
             transform: "translateX(0) scale(1)"
           }
+        },
+        "rainbow": {
+          "0%": {
+            backgroundPosition: "0% 50%"
+          },
+          "100%": {
+            backgroundPosition: "200% 50%"
+          }
         }
       },
       animation: {
@@ -137,6 +150,7 @@ export default {
         "slide-up": "slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-left": "slide-left 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-right": "slide-right 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+        "rainbow": "rainbow 2s linear infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

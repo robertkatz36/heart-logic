@@ -16,15 +16,8 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
       </div>
 
       <div className="relative z-10">
-        {/* Quote icon */}
-        <div className="flex justify-start mb-6">
-          <div className="p-3 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-            <Quote className="w-6 h-6 text-primary" />
-          </div>
-        </div>
-
         {/* Testimonial text */}
-        <p className="text-foreground leading-relaxed text-right whitespace-pre-line mb-6 text-lg group-hover:text-foreground/90 transition-colors duration-300">
+        <p dir="rtl" className="text-foreground leading-relaxed text-right whitespace-pre-line mb-6 text-lg group-hover:text-foreground/90 transition-colors duration-300">
           {testimonial}
         </p>
 

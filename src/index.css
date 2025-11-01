@@ -51,6 +51,12 @@ All colors MUST be HSL.
     --color-3: oklch(69.6% 0.165 251);
     --color-4: oklch(80.2% 0.134 225);
     --color-5: oklch(90.7% 0.231 133);
+    /* Purple gradient colors for rainbow button - using oklch for consistency */
+    --purple-color-1: oklch(60% 0.22 265);
+    --purple-color-2: oklch(62% 0.20 270);
+    --purple-color-3: oklch(65% 0.18 240);
+    --purple-color-4: oklch(63% 0.21 280);
+    --purple-color-5: oklch(67% 0.19 275);
   }
 
   .dark {
@@ -86,7 +92,14 @@ All colors MUST be HSL.
     --color-3: oklch(69.6% 0.165 251);
     --color-4: oklch(80.2% 0.134 225);
     --color-5: oklch(90.7% 0.231 133);
+    /* Purple gradient colors for rainbow button - using oklch for consistency */
+    --purple-color-1: oklch(60% 0.22 265);
+    --purple-color-2: oklch(62% 0.20 270);
+    --purple-color-3: oklch(65% 0.18 240);
+    --purple-color-4: oklch(63% 0.21 280);
+    --purple-color-5: oklch(67% 0.19 275);
   }
+
   .theme {
     --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
   }
@@ -105,7 +118,7 @@ All colors MUST be HSL.
 /* Mesh Gradient Background */
 .mesh-gradient {
   position: relative;
-  background: 
+  background:
     radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.3) 0px, transparent 50%),
     radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.25) 0px, transparent 50%),
     radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 0.3) 0px, transparent 50%),
@@ -119,7 +132,7 @@ All colors MUST be HSL.
 /* Alternative: More pastel, softer version */
 .mesh-gradient-soft {
   position: relative;
-  background: 
+  background:
     radial-gradient(circle at 20% 30%, rgba(255, 200, 180, 0.4) 0%, transparent 40%),
     radial-gradient(circle at 80% 20%, rgba(160, 220, 255, 0.35) 0%, transparent 40%),
     radial-gradient(circle at 50% 90%, rgba(255, 160, 200, 0.4) 0%, transparent 45%),
@@ -133,9 +146,12 @@ All colors MUST be HSL.
 
 /* Animated version (optional) */
 @keyframes gradient-shift {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 50%, 100% 0%, 50% 100%, 0% 50%, 100% 100%, 30% 50%, 80% 50%;
   }
+
   50% {
     background-position: 100% 50%, 0% 100%, 50% 0%, 100% 50%, 0% 0%, 70% 50%, 20% 50%;
   }
@@ -143,7 +159,7 @@ All colors MUST be HSL.
 
 .mesh-gradient-animated {
   position: relative;
-  background: 
+  background:
     radial-gradient(circle at 20% 30%, rgba(255, 200, 180, 0.4) 0%, transparent 40%),
     radial-gradient(circle at 80% 20%, rgba(160, 220, 255, 0.35) 0%, transparent 40%),
     radial-gradient(circle at 50% 90%, rgba(255, 160, 200, 0.4) 0%, transparent 45%),
@@ -160,6 +176,7 @@ All colors MUST be HSL.
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -169,6 +186,7 @@ All colors MUST be HSL.
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -179,11 +197,18 @@ All colors MUST be HSL.
 
 @theme inline {
   @keyframes rainbow {
-  0% {
-    background-position: 0%;
+    0% {
+      background-position: 0%;
     }
-  100% {
-    background-position: 200%;
+
+    100% {
+      background-position: 200%;
     }
   }
+}
+
+/* Rainbow button animation */
+.animate-rainbow {
+  animation: rainbow 2s linear infinite;
+  background-position: 0% 50%;
 }

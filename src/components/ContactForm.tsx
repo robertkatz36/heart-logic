@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, User, Calendar } from "lucide-react";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 interface ContactFormProps {
   courses: string[];
@@ -163,12 +164,13 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
           </div>
 
           {/* כפתור שליחה */}
-          <Button
+          <RainbowButton
             type="submit"
-            className="w-full bg-gradient-spiritual text-white text-lg py-6 hover:opacity-90 transition-all duration-300 hover:scale-105"
+            className="w-full text-lg py-6 rounded-md text-white"
+            size="lg"
           >
             שלח פנייה
-          </Button>
+          </RainbowButton>
         </form>
       </CardContent>
     </Card>

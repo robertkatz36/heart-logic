@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -62,8 +63,15 @@ const NavBar = () => {
           {/* Logo/Brand */}
           <button
             onClick={() => scrollToSection("#home")}
-            className="text-xl md:text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
+            className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
+            <Image
+              src="/favicon-32x32.png"
+              alt="לוגיקת הלב"
+              width={32}
+              height={32}
+              className="w-6 h-6 md:w-8 md:h-8"
+            />
             לוגיקת הלב
           </button>
 
@@ -81,7 +89,7 @@ const NavBar = () => {
                   className={cn(
                     "text-sm font-bold transition-colors",
                     !isCTA && (isActive
-                      ? "text-primary bg-accent"
+                      ? "text-white bg-accent"
                       : "text-muted-foreground hover:text-foreground hover:bg-accent")
                   )}
                 >
@@ -136,7 +144,7 @@ const NavBar = () => {
                       className={cn(
                         "text-right py-3 px-4 rounded-lg text-base font-bold transition-colors",
                         isActive
-                          ? "text-primary bg-accent"
+                          ? "text-white bg-accent"
                           : "text-muted-foreground hover:text-foreground hover:bg-accent"
                       )}
                     >

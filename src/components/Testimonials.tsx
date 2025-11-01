@@ -52,7 +52,9 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <TestimonialMarquee testimonials={testimonialsData} />
+        <div dir="ltr">
+          <TestimonialMarquee testimonials={testimonialsData} />
+        </div>
       </div>
     </section>
   );
