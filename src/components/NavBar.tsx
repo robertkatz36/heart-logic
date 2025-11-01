@@ -66,7 +66,7 @@ const NavBar = () => {
             className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
             <Image
-              src="/favicon-32x32.png"
+              src="/heart.png"
               alt="לוגיקת הלב"
               width={32}
               height={32}

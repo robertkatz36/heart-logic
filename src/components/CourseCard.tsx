@@ -29,6 +29,13 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
     }
   };
 
+  const handleCycleClick = (cycle: Cycle) => {
+    if (!onRegister || !cycle.schedule || !cycle.opening) return;
+
+    const cycleInfo = `${cycle.name} - ${cycle.schedule} (${cycle.opening})`;
+    onRegister(title, cycleInfo);
+  };
+
   return (
     <article
       className="rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/30 hover:border-white/40 animate-fade-in backdrop-blur-md"
@@ -61,7 +68,11 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
 
         <div className="space-y-3">
           {cycles.map((cycle, index) => (
-            <div key={`${cycle.name}-${index}`} className="bg-muted/50 rounded-lg p-4 space-y-2 relative overflow-hidden">
+            <div
+              key={`${cycle.name}-${index}`}
+              onClick={() => handleCycleClick(cycle)}
+              className="bg-muted/50 rounded-lg p-4 space-y-2 relative overflow-hidden hover:bg-muted/70 hover:scale-[1.02] hover:shadow-lg transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/20"
+            >
               {/* Ribbon לתאריך מוגדר */}
               {cycle.schedule && cycle.opening && (
                 <div className="absolute top-2 -left-8 -rotate-45 bg-gradient-to-r from-primary to-primary/80 text-white py-0.5 px-8 text-xs font-bold shadow-lg z-10">
