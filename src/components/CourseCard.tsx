@@ -95,15 +95,15 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
       </div>
 
       <div className="pt-6 border-t border-border">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-center gap-5">
+          <span className="text-2xl font-bold text-primary flex-shrink-0">מחיר: {price}</span>
           <button
             type="button"
             onClick={handleRegister}
-            className="px-6 py-3 bg-gradient-spiritual text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-md"
+            className="px-6 py-3 bg-gradient-spiritual text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-md flex-shrink-0"
           >
             הרשמה
           </button>
-          <span className="text-2xl font-bold text-primary">מחיר: {price}</span>
         </div>
       </div>
     </article>

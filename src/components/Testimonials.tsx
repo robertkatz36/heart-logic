@@ -51,10 +51,10 @@ const Testimonials = () => {
             עדויות ממשתתפי הסדנאות והקורסים
           </p>
         </div>
+      </div>
 
-        <div dir="ltr">
-          <TestimonialMarquee testimonials={testimonialsData} />
-        </div>
+      <div dir="ltr" className="w-[100vw] md:w-full md:px-4 relative -ml-4 md:ml-0">
+        <TestimonialMarquee testimonials={testimonialsData} />
       </div>
     </section>
   );

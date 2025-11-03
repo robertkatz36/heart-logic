@@ -42,7 +42,7 @@ export default function HomePage() {
           name: "מועד אביב 2026 - בקרוב"
         }
       ],
-      price: "1490 ש\"ח"
+      price: "1,490 ₪"
     },
     {
       title: "מדיטציה דיאלוגית - זודיאק",
@@ -73,7 +73,7 @@ export default function HomePage() {
           name: "מועד אביב 2026 - בקרוב"
         }
       ],
-      price: "1490 ש\"ח"
+      price: "1,490 ₪"
     },
     {
       title: "הרפתקאות - אביר השולחן העגול",
@@ -97,7 +97,7 @@ export default function HomePage() {
           name: "מועד אביב 2026 - בקרוב"
         }
       ],
-      price: "1490 ש\"ח"
+      price: "1,490 ₪"
     }
   ];
 

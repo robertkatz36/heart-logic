@@ -47,7 +47,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="pt-6 border-t border-white/20 mt-8">
+          <div className="pt-6  mt-8">
             <p className="text-sm opacity-75">
               © {new Date().getFullYear()} כל הזכויות שמורות.
             </p>

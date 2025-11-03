@@ -6,7 +6,7 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
-    <article className="group relative bg-card rounded-3xl p-8 shadow-lg border border-border/50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden h-full mr-4 w-[350px] md:w-[400px]">
+    <article className="group relative bg-card rounded-3xl p-8 shadow-lg border border-border/50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden h-full mr-4 w-[250px] md:w-[400px]">
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
 
