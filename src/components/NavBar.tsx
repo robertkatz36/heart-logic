@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const navItems = [
   { label: "בית", href: "#home" },
@@ -16,7 +17,7 @@ const navItems = [
 ];
 
 const NavBar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [_isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -81,10 +82,22 @@ const NavBar = () => {
               const sectionId = item.href.substring(1);
               const isActive = activeSection === sectionId;
               const isCTA = item.href === "#contact";
+              if (isCTA) {
+                return (
+                  <RainbowButton
+                    key={item.href}
+                    variant="default"
+                    className="text-sm font-bold transition-colors mr-10"
+                    onClick={() => scrollToSection(item.href)}
+                  >
+                    {item.label}
+                  </RainbowButton>
+                );
+              }
               return (
                 <Button
                   key={item.href}
-                  variant={isCTA ? "default" : "ghost"}
+                  variant={"ghost"}
                   onClick={() => scrollToSection(item.href)}
                   className={cn(
                     "text-sm font-bold transition-colors",
@@ -112,6 +125,7 @@ const NavBar = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-64">
+              <SheetTitle className="sr-only">תפריט ניווט</SheetTitle>
               <nav className="flex flex-col gap-4 mt-8">
                 {navItems.map((item) => {
                   const sectionId = item.href.substring(1);
@@ -120,7 +134,7 @@ const NavBar = () => {
 
                   if (isCTA) {
                     return (
-                      <Button
+                      <RainbowButton
                         key={item.href}
                         variant="default"
                         onClick={() => {
@@ -130,7 +144,7 @@ const NavBar = () => {
                         className="text-base font-bold w-full"
                       >
                         {item.label}
-                      </Button>
+                      </RainbowButton>
                     );
                   }
 
