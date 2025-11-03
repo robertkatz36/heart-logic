@@ -11,6 +11,7 @@ const rainbowButtonVariants = cva(
     "rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-purple-500 aria-invalid:border-destructive",
     "text-sm font-medium whitespace-nowrap",
     "disabled:pointer-events-none disabled:opacity-50",
+    "hover:scale-105",
     "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0"
   ),
   {

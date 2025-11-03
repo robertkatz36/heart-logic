@@ -102,7 +102,7 @@ const NavBar = () => {
                   className={cn(
                     "text-sm font-bold transition-colors",
                     !isCTA && (isActive
-                      ? "text-white bg-accent"
+                      ? "text-white bg-accent/60"
                       : "text-muted-foreground hover:text-foreground hover:bg-accent")
                   )}
                 >
@@ -158,7 +158,7 @@ const NavBar = () => {
                       className={cn(
                         "text-right py-3 px-4 rounded-lg text-base font-bold transition-colors",
                         isActive
-                          ? "text-white bg-accent"
+                          ? "text-white bg-accent/60"
                           : "text-muted-foreground hover:text-foreground hover:bg-accent"
                       )}
                     >
