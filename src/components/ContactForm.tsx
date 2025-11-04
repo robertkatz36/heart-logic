@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, User, Calendar } from "lucide-react";
+import { Mail, Phone, User } from "lucide-react";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 
 interface Cycle {
@@ -30,7 +30,7 @@ interface ContactFormProps {
 }
 
 export interface ContactFormRef {
-  fillForm: (course: string, cycle?: string) => void;
+  fillForm: (course: string) => void;
 }
 
 const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, ref) => {
@@ -38,37 +38,18 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
   const nameId = useId();
   const phoneId = useId();
   const courseId = useId();
-  const cycleId = useId();
   const cardRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     course: "",
-    cycle: "",
   });
 
-  // Get available cycles for selected course
-  const availableCycles = useMemo(() => {
-    if (!formData.course) return [];
-    const selectedCourse = courses.find(c => c.title === formData.course);
-    if (!selectedCourse) return [];
-    return selectedCourse.cycles.filter(cycle => cycle.schedule && cycle.opening);
-  }, [formData.course, courses]);
-
-  // Format cycle display text
-  const formatCycleText = (cycle: Cycle) => {
-    if (cycle.schedule && cycle.opening) {
-      return `${cycle.name} - ${cycle.schedule} (${cycle.opening})`;
-    }
-    return cycle.name;
-  };
-
   useImperativeHandle(ref, () => ({
-    fillForm: (course: string, cycle?: string) => {
+    fillForm: (course: string) => {
       setFormData(prev => ({
         ...prev,
         course,
-        cycle: cycle || "",
       }));
       // גלילה לטופס
       setTimeout(() => {
@@ -99,7 +80,6 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
           name: formData.name,
           phone: formData.phone,
           course: formData.course,
-          cycle: formData.cycle || "",
         }),
       });
 
@@ -117,7 +97,6 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
         name: "",
         phone: "",
         course: "",
-        cycle: "",
       });
     } catch (error) {
       console.error("Email sending failed:", error);
@@ -181,7 +160,7 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
             </Label>
             <Select
               value={formData.course}
-              onValueChange={(value) => setFormData({ ...formData, course: value, cycle: "" })}
+              onValueChange={(value) => setFormData({ ...formData, course: value })}
             >
               <SelectTrigger className="text-right" dir="rtl">
                 <SelectValue placeholder="בחר קורס" />
@@ -192,33 +171,6 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
                     {course.title}
                   </SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* מחזור (אופציונלי) */}
-          <div className="space-y-2">
-            <Label htmlFor={cycleId} className="text-right flex items-center justify-end gap-2">
-              <span>מחזור מבוקש (אופציונלי)</span>
-              <Calendar className="w-4 h-4 text-primary" />
-            </Label>
-            <Select
-              value={formData.cycle}
-              onValueChange={(value) => setFormData({ ...formData, cycle: value })}
-              disabled={!formData.course || availableCycles.length === 0}
-            >
-              <SelectTrigger className="text-right" dir="rtl" id={cycleId}>
-                <SelectValue placeholder={formData.course ? "בחר מחזור" : "בחר קורס קודם"} />
-              </SelectTrigger>
-              <SelectContent>
-                {availableCycles.map((cycle, index) => {
-                  const cycleText = formatCycleText(cycle);
-                  return (
-                    <SelectItem key={`${cycle.name}-${index}`} value={cycleText} className="text-right">
-                      {cycleText}
-                    </SelectItem>
-                  );
-                })}
               </SelectContent>
             </Select>
           </div>

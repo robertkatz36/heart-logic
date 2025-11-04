@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -66,13 +65,6 @@ const NavBar = () => {
             onClick={() => scrollToSection("#home")}
             className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
-            <Image
-              src="/heart2.webp"
-              alt="לוגיקת הלב"
-              width={21}
-              height={32}
-              className="w-4 h-6 md:w-[21px] md:h-8"
-            />
             לוגיקת הלב
           </button>
 

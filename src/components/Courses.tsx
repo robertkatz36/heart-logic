@@ -1,4 +1,5 @@
 import CourseCard from "./CourseCard";
+import { ReactNode } from "react";
 
 interface Cycle {
   name: string;
@@ -9,14 +10,14 @@ interface Cycle {
 interface Course {
   title: string;
   subtitle: string;
-  description: string;
+  description: string | ReactNode;
   cycles: Cycle[];
   price: string;
 }
 
 interface CoursesProps {
   courses: Course[];
-  onCourseRegister: (courseTitle: string, cycleInfo: string) => void;
+  onCourseRegister: (courseTitle: string) => void;
 }
 
 const Courses = ({ courses, onCourseRegister }: CoursesProps) => {

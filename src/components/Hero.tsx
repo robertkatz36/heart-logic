@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-[70vh] flex items-center justify-center z-10">
