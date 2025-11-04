@@ -67,11 +67,11 @@ const NavBar = () => {
             className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
           >
             <Image
-              src="/heart.webp"
+              src="/heart2.webp"
               alt="לוגיקת הלב"
-              width={32}
+              width={21}
               height={32}
-              className="w-6 h-6 md:w-8 md:h-8"
+              className="w-4 h-6 md:w-[21px] md:h-8"
             />
             לוגיקת הלב
           </button>
