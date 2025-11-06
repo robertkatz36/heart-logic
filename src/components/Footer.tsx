@@ -51,6 +51,9 @@ const Footer = () => {
             <p className="text-sm opacity-75">
               © {new Date().getFullYear()} כל הזכויות שמורות.
             </p>
+            <a href="https://www.vecteezy.com/free-videos/watercolor-background">Watercolor Background Stock Videos by Vecteezy</a>
+
+
           </div>
         </div>
       </div>
