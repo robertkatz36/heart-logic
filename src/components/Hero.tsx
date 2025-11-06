@@ -8,7 +8,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-4 tracking-tight">
             המרכז להתפתחות האדם
           </h1>
-          <p className="text-2xl md:text-3xl text-blue-900 mb-6 font-semibold">
+          <p className="text-4xl md:text-6xl text-blue-900 mb-6 font-semibold">
             לוגיקת הלב
           </p>
         </article>

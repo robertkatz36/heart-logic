@@ -35,9 +35,9 @@ export default function HomePage() {
       ),
       cycles: [
         {
-          name: "מועד סתיו 2025",
+          name: "מועד חורף 2025",
           schedule: "ימי חמישי ערב 19:30-21:30",
-          opening: "פתיחה 23/10/25 - סיום 25/12/25"
+          opening: "פתיחה 27/11/25 - סיום 22/01/26"
         }
       ],
       price: "1,490 ₪"
@@ -56,9 +56,9 @@ export default function HomePage() {
       ),
       cycles: [
         {
-          name: "מועד סתיו 2025",
+          name: "מועד חורף 2025",
           schedule: "ימי שני ערב 19:30-21:30",
-          opening: "פתיחה 20/10/25 - סיום 22/12/25"
+          opening: "פתיחה 24/11/25 - סיום 26/01/26"
         }
       ],
       price: "1,490 ₪"
@@ -85,9 +85,9 @@ export default function HomePage() {
       ),
       cycles: [
         {
-          name: "מועד סתיו 2025",
+          name: "מועד חורף 2025",
           schedule: "ימי רביעי ערב 19:30-21:30",
-          opening: "פתיחה 22/10/25 - סיום 24/12/25"
+          opening: "פתיחה 26/11/25 - סיום 21/01/26"
         }
       ],
       price: "1,490 ₪"

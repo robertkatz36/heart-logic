@@ -1,4 +1,4 @@
-import { Calendar, Clock } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { ReactNode } from "react";
 
 interface Cycle {
@@ -45,7 +45,7 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
               {subtitle}
             </span>
           )}
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center min-h-[5rem] flex items-start justify-center">
             {title}
           </h3>
         </div>
@@ -77,12 +77,9 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
                 )}
                 <h4 className="font-semibold text-foreground text-center">{cycle.name}</h4>
                 {cycle.schedule && cycle.opening && (
-                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <div className="text-right flex-1">
-                      <p>{cycle.schedule}</p>
-                      <p className="text-xs">{cycle.opening}</p>
-                    </div>
-                    <Clock className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                  <div className="text-center text-sm text-muted-foreground">
+                    <p>{cycle.schedule}</p>
+                    <p className="text-xs">{cycle.opening}</p>
                   </div>
                 )}
               </div>
