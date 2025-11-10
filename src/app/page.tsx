@@ -35,7 +35,7 @@ export default function HomePage() {
       ),
       cycles: [
         {
-          name: "מועד חורף 2025",
+          name: "מועד חורף 2026",
           schedule: "ימי חמישי ערב 19:30-21:30",
           opening: "פתיחה 27/11/25 - סיום 22/01/26"
         }
@@ -56,7 +56,7 @@ export default function HomePage() {
       ),
       cycles: [
         {
-          name: "מועד חורף 2025",
+          name: "מועד חורף 2026",
           schedule: "ימי שני ערב 19:30-21:30",
           opening: "פתיחה 24/11/25 - סיום 26/01/26"
         }
@@ -85,7 +85,7 @@ export default function HomePage() {
       ),
       cycles: [
         {
-          name: "מועד חורף 2025",
+          name: "מועד חורף 2026",
           schedule: "ימי רביעי ערב 19:30-21:30",
           opening: "פתיחה 26/11/25 - סיום 21/01/26"
         }
