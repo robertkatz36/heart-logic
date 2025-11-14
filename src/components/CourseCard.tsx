@@ -41,7 +41,7 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
       <div>
         <div className="mb-4">
           {subtitle && (
-            <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
+            <span className="inline-block px-4 py-1 bg-[hsl(265,70%,50%)]/10 text-[hsl(265,70%,50%)] text-sm font-semibold rounded-full mb-4">
               {subtitle}
             </span>
           )}
@@ -71,7 +71,7 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
               >
                 {/* Ribbon לתאריך מוגדר */}
                 {cycle.schedule && cycle.opening && (
-                  <div className="absolute top-2 -left-8 -rotate-45 bg-gradient-to-r from-primary to-primary/80 text-white py-0.5 px-8 text-xs font-bold shadow-lg z-10">
+                  <div className="absolute top-2 -left-8 -rotate-45 bg-gradient-to-r from-[hsl(265,70%,50%)] to-[hsl(265,70%,40%)] text-white py-0.5 px-8 text-xs font-bold shadow-lg z-10">
                     פתוח
                   </div>
                 )}
