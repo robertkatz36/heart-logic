@@ -96,6 +96,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen mesh-gradient-soft">
+      {/* Hidden element for accessibility/SEO */}
+      <div className="sr-only">
+        <h1>בדיקה</h1>
+      </div>
       <NavBar />
 
       {/* Shared video background for Hero and AboutLogic */}
