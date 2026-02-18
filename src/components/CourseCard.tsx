@@ -1,5 +1,5 @@
 import { Calendar } from "lucide-react";
-import { ReactNode } from "react";
+import React from "react";
 
 interface Cycle {
   name: string;
@@ -10,7 +10,7 @@ interface Cycle {
 interface CourseCardProps {
   title: string;
   subtitle?: string;
-  description: string | ReactNode;
+  description: string | React.ReactNode;
   cycles: Cycle[];
   price: string;
   delay?: number;
@@ -21,12 +21,20 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
   const handleRegister = () => {
     if (onRegister) {
       onRegister(title);
+    } else {
+      // Dispatch custom event for Astro
+      window.dispatchEvent(new CustomEvent('course-register', { detail: { courseTitle: title } }));
     }
   };
 
   const handleCycleClick = (cycle: Cycle) => {
-    if (!onRegister || !cycle.schedule || !cycle.opening) return;
-    onRegister(title);
+    if (!cycle.schedule || !cycle.opening) return;
+    if (onRegister) {
+      onRegister(title);
+    } else {
+      // Dispatch custom event for Astro
+      window.dispatchEvent(new CustomEvent('course-register', { detail: { courseTitle: title } }));
+    }
   };
 
   return (
@@ -50,9 +58,10 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
           </h3>
         </div>
 
-        <div className="text-foreground font-medium leading-relaxed mb-6 text-center">
-          {description}
-        </div>
+        <div
+          className="text-foreground font-medium leading-relaxed mb-6 text-center"
+          dangerouslySetInnerHTML={{ __html: typeof description === 'string' ? description : '' }}
+        />
       </div>
 
       <div>

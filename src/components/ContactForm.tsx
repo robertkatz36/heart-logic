@@ -1,4 +1,4 @@
-import { useState, useId, forwardRef, useImperativeHandle, useRef, useMemo } from "react";
+import { useState, useId, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,36 +27,52 @@ interface Course {
 
 interface ContactFormProps {
   courses: Course[];
+  initialCourse?: string;
 }
 
-export interface ContactFormRef {
-  fillForm: (course: string) => void;
-}
-
-const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, ref) => {
+const ContactForm = ({ courses, initialCourse }: ContactFormProps) => {
   const { toast } = useToast();
   const nameId = useId();
   const phoneId = useId();
   const courseId = useId();
-  const cardRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    course: "",
+    course: initialCourse || "",
   });
 
-  useImperativeHandle(ref, () => ({
-    fillForm: (course: string) => {
-      setFormData(prev => ({
-        ...prev,
-        course,
-      }));
-      // גלילה לטופס
-      setTimeout(() => {
-        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 100);
-    },
-  }));
+  useEffect(() => {
+    if (initialCourse) {
+      setFormData(prev => ({ ...prev, course: initialCourse }));
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        setTimeout(() => {
+          contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      }
+    }
+  }, [initialCourse]);
+
+  // Listen for course registration events
+  useEffect(() => {
+    const handleCourseRegister = (e: CustomEvent) => {
+      const courseTitle = e.detail?.courseTitle;
+      if (courseTitle) {
+        setFormData(prev => ({ ...prev, course: courseTitle }));
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          setTimeout(() => {
+            contactSection.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 100);
+        }
+      }
+    };
+
+    window.addEventListener('course-register' as any, handleCourseRegister);
+    return () => {
+      window.removeEventListener('course-register' as any, handleCourseRegister);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,7 +125,7 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
   };
 
   return (
-    <Card ref={cardRef} className="w-full max-w-2xl mx-auto shadow-xl border-2 animate-fade-in">
+    <Card className="w-full max-w-2xl mx-auto shadow-xl border-2 animate-fade-in">
       <CardHeader className="text-center">
         <CardTitle className="text-3xl md:text-4xl font-bold">הרשמה לקורס</CardTitle>
         <CardDescription className="text-lg">
@@ -187,9 +203,6 @@ const ContactForm = forwardRef<ContactFormRef, ContactFormProps>(({ courses }, r
       </CardContent>
     </Card>
   );
-});
-
-ContactForm.displayName = "ContactForm";
+};
 
 export default ContactForm;
-

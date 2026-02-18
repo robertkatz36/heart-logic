@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 const About = () => {
   return (
@@ -9,7 +8,7 @@ const About = () => {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-spiritual rounded-full blur-xl opacity-30"></div>
-              <Image
+              <img
                 src="/robert-katz.webp"
                 alt="רוברט כץ - מנטור רוחני ומנחה מדיטציה"
                 width={256}

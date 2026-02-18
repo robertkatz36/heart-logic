@@ -1,21 +1,21 @@
+import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
-import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
-export async function POST(request: Request) {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
     const { name, phone, course, cycle } = body;
 
     if (!name || !phone || !course) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
+      return new Response(
+        JSON.stringify({ error: 'Missing required fields' }),
         { status: 400 }
       );
     }
 
-    const recipientEmail = process.env.CONTACT_EMAIL || 'your-email@example.com';
+    const recipientEmail = import.meta.env.CONTACT_EMAIL || 'your-email@example.com';
 
     const { data, error } = await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
@@ -34,19 +34,18 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error('Resend error:', error);
-      return NextResponse.json(
-        { error: 'Failed to send email' },
+      return new Response(
+        JSON.stringify({ error: 'Failed to send email' }),
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true, data });
+    return new Response(JSON.stringify({ success: true, data }));
   } catch (error) {
     console.error('API error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
+    return new Response(
+      JSON.stringify({ error: 'Internal server error' }),
       { status: 500 }
     );
   }
-}
-
+};

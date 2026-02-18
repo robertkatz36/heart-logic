@@ -3,10 +3,7 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
   ],
   prefix: "",
   theme: {
@@ -19,7 +16,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-noto-sans-hebrew)', 'Noto Sans Hebrew', 'sans-serif'],
+        sans: ['Noto Sans Hebrew', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,5 +1,5 @@
 import CourseCard from "./CourseCard";
-import { ReactNode } from "react";
+import React from "react";
 
 interface Cycle {
   name: string;
@@ -10,17 +10,28 @@ interface Cycle {
 interface Course {
   title: string;
   subtitle: string;
-  description: string | ReactNode;
+  description: string | React.ReactNode;
   cycles: Cycle[];
   price: string;
 }
 
 interface CoursesProps {
   courses: Course[];
-  onCourseRegister: (courseTitle: string) => void;
+  onCourseRegister?: (courseTitle: string) => void;
 }
 
 const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
+  const handleCourseRegister = (courseTitle: string) => {
+    if (onCourseRegister) {
+      onCourseRegister(courseTitle);
+    } else {
+      // Fallback: scroll to contact form
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
   return (
     <section id="courses" className="py-20 px-4">
       <div className="container mx-auto">
@@ -46,7 +57,7 @@ const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
               cycles={course.cycles}
               price={course.price}
               delay={courses.indexOf(course) * 150}
-              onRegister={onCourseRegister}
+              onRegister={handleCourseRegister}
             />
           ))}
         </div>

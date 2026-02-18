@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .next
 out
+.astro
+dist
+dist-ssr
