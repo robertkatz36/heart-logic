@@ -29,4 +29,3 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
 };
 
 export default TestimonialCard;
-

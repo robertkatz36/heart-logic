@@ -1,0 +1,30 @@
+---
+interface Props {
+  testimonial: string;
+}
+
+const { testimonial } = Astro.props;
+---
+
+<article class="group relative bg-card rounded-3xl p-8 shadow-lg border border-border/50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden h-full mr-4 w-[250px] md:w-[400px]">
+  <!-- Gradient overlay on hover -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+
+  <!-- Decorative quote icon background -->
+  <div class="absolute top-4 left-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+    <svg class="w-24 h-24 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25-.25 4-2.75 4v3c0 1 0 1 1 1z" />
+    </svg>
+  </div>
+
+  <div class="relative z-10">
+    <!-- Testimonial text -->
+    <p dir="rtl" class="text-foreground leading-relaxed text-right whitespace-pre-line mb-6 text-lg group-hover:text-foreground/90 transition-colors duration-300">
+      {testimonial}
+    </p>
+
+    <!-- Decorative line -->
+    <div class="h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent w-full"></div>
+  </div>
+</article>

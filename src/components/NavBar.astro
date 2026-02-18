@@ -1,0 +1,146 @@
+---
+const navItems = [
+  { label: "בית", href: "#home" },
+  { label: "אודות לוגיקת הלב", href: "#about-logic" },
+  { label: "אודות", href: "#about" },
+  { label: "קורסים", href: "#courses" },
+  { label: "המלצות", href: "#testimonials" },
+  { label: "מאמרים", href: "#articles" },
+  { label: "הרשמה", href: "#contact" },
+];
+
+const rainbowCls = [
+  "relative cursor-pointer group transition-all animate-rainbow",
+  "inline-flex items-center justify-center gap-2 shrink-0 rounded-sm",
+  "text-sm font-bold whitespace-nowrap hover:scale-105",
+  "border-0 h-9 px-4 py-2",
+  "bg-[linear-gradient(#711AD9,#711AD9),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,var(--purple-color-1),var(--purple-color-2),var(--purple-color-3),var(--purple-color-4),var(--purple-color-5))]",
+  "bg-[length:200%] [background-position:0%_50%] text-primary-foreground",
+  "[background-clip:padding-box,border-box,border-box] [background-origin:border-box]",
+  "[border:calc(0.125rem)_solid_transparent]",
+  "before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5",
+  "before:-translate-x-1/2 before:animate-rainbow",
+  "before:bg-[linear-gradient(90deg,var(--purple-color-1),var(--purple-color-2),var(--purple-color-3),var(--purple-color-4),var(--purple-color-5))]",
+  "before:[filter:blur(0.75rem)]",
+].join(" ");
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/40 backdrop-blur-md border-b border-border/30 shadow-lg shadow-black/5">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16 md:h-20">
+
+      <button
+        data-href="#home"
+        class="nav-scroll flex items-center gap-2 text-xl md:text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
+      >
+        לוגיקת הלב
+      </button>
+
+      <div class="hidden md:flex items-center gap-1">
+        {navItems.map((item) => {
+          const isCTA = item.href === "#contact";
+          if (isCTA) {
+            return (
+              <button data-href={item.href} class={`nav-scroll ${rainbowCls} mr-10`}>
+                {item.label}
+              </button>
+            );
+          }
+          return (
+            <button
+              data-href={item.href}
+              data-section={item.href.substring(1)}
+              class="nav-scroll nav-item text-sm font-bold transition-colors px-4 py-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent"
+            >
+              {item.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-accent" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="6" y2="6"/>
+          <line x1="4" x2="20" y1="12" y2="12"/>
+          <line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-overlay" class="fixed inset-0 z-50 hidden">
+  <div id="mobile-backdrop" class="absolute inset-0 bg-black/50"></div>
+  <div id="mobile-panel" class="absolute top-0 left-0 h-full w-64 bg-background shadow-xl -translate-x-full transition-transform duration-300">
+    <span class="sr-only">תפריט ניווט</span>
+    <nav class="flex flex-col gap-4 mt-8 p-4">
+      {navItems.map((item) => {
+        const isCTA = item.href === "#contact";
+        if (isCTA) {
+          return (
+            <button data-href={item.href} class={`nav-scroll mobile-nav-item ${rainbowCls} w-full text-base`}>
+              {item.label}
+            </button>
+          );
+        }
+        return (
+          <button
+            data-href={item.href}
+            data-section={item.href.substring(1)}
+            class="nav-scroll mobile-nav-item text-right py-3 px-4 rounded-lg text-base font-bold transition-colors text-muted-foreground hover:text-foreground hover:bg-accent"
+          >
+            {item.label}
+          </button>
+        );
+      })}
+    </nav>
+  </div>
+</div>
+
+<script>
+  const desktopItems = document.querySelectorAll<HTMLElement>('.nav-item[data-section]');
+  const mobilePanel = document.getElementById('mobile-panel');
+  const mobileOverlay = document.getElementById('mobile-overlay');
+  const mobileBackdrop = document.getElementById('mobile-backdrop');
+
+  const openMenu = () => {
+    mobileOverlay?.classList.remove('hidden');
+    requestAnimationFrame(() => mobilePanel?.classList.remove('-translate-x-full'));
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    mobilePanel?.classList.add('-translate-x-full');
+    setTimeout(() => mobileOverlay?.classList.add('hidden'), 300);
+    document.body.style.overflow = '';
+  };
+
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', openMenu);
+  mobileBackdrop?.addEventListener('click', closeMenu);
+
+  document.querySelectorAll<HTMLElement>('.nav-scroll').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const href = btn.dataset.href;
+      if (href) document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closeMenu();
+    });
+  });
+
+  const updateActive = () => {
+    const scrollPos = window.scrollY + 100;
+    let active = '';
+    desktopItems.forEach((btn) => {
+      const section = document.getElementById(btn.dataset.section!);
+      if (section && section.offsetTop <= scrollPos) active = btn.dataset.section!;
+    });
+    desktopItems.forEach((btn) => {
+      const isActive = btn.dataset.section === active;
+      btn.classList.toggle('text-white', isActive);
+      btn.classList.toggle('bg-accent/60', isActive);
+      btn.classList.toggle('text-muted-foreground', !isActive);
+    });
+  };
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+</script>
