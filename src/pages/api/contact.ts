@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const apiKey = import.meta.env.RESEND_API_KEY;
+    const apiKey = 're_1234567890';
     if (!apiKey) {
       return new Response(
         JSON.stringify({ error: 'Email service not configured' }),
@@ -22,7 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const resend = new Resend(apiKey);
-    const recipientEmail = import.meta.env.CONTACT_EMAIL || 'your-email@example.com';
+    const recipientEmail = 'robertkatz36@gmail.com';
 
     const { data, error } = await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
