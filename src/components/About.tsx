@@ -9,7 +9,7 @@ const About = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-spiritual rounded-full blur-xl opacity-30"></div>
               <img
-                src="/robert-katz.webp"
+                src={`${import.meta.env.BASE_URL}robert-katz.webp`}
                 alt="רוברט כץ - מנטור רוחני ומנחה מדיטציה"
                 width={256}
                 height={256}
