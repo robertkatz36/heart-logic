@@ -19,17 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: latest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
+          bun-version: latest
       - uses: actions/configure-pages@v4
         id: pages
-      - run: pnpm install
-      - run: pnpm build
+      - run: bun install
+      - run: bun run build
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
