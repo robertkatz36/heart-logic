@@ -3,6 +3,16 @@ import { NextResponse } from 'next/server';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+export async function OPTIONS() {
+  return new Response(null, { status: 204, headers: corsHeaders });
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -11,7 +21,7 @@ export async function POST(request: Request) {
     if (!name || !phone || !course) {
       return NextResponse.json(
         { error: 'Missing required fields' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 
@@ -36,17 +46,16 @@ export async function POST(request: Request) {
       console.error('Resend error:', error);
       return NextResponse.json(
         { error: 'Failed to send email' },
-        { status: 500 }
+        { status: 500, headers: corsHeaders }
       );
     }
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data }, { headers: corsHeaders });
   } catch (error) {
     console.error('API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     );
   }
 }
-
