@@ -5,8 +5,8 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://robertkatz36.github.io',
-  base: '/heart-logic/',
+  site: 'https://www.heart-logic.com',
+  base: '/',
   integrations: [
     react(),
     tailwind({
