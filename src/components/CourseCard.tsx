@@ -13,11 +13,12 @@ interface CourseCardProps {
   description: string | React.ReactNode;
   cycles: Cycle[];
   price: string;
+  meetingInfo?: string;
   delay?: number;
   onRegister?: (courseTitle: string) => void;
 }
 
-const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, onRegister }: CourseCardProps) => {
+const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo = "10 מפגשים בזום", delay = 0, onRegister }: CourseCardProps) => {
   const handleRegister = () => {
     if (onRegister) {
       onRegister(title);
@@ -28,7 +29,6 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
   };
 
   const handleCycleClick = (cycle: Cycle) => {
-    if (!cycle.schedule || !cycle.opening) return;
     if (onRegister) {
       onRegister(title);
     } else {
@@ -67,7 +67,7 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
       <div>
         <div className="space-y-4 mb-6">
           <div className="flex items-center gap-2 text-sm text-muted-foreground justify-end">
-            <span>10 מפגשים בזום</span>
+            <span>{meetingInfo}</span>
             <Calendar className="w-4 h-4 text-primary" />
           </div>
 
@@ -85,10 +85,12 @@ const CourseCard = ({ title, subtitle, description, cycles, price, delay = 0, on
                   </div>
                 )}
                 <h4 className="font-semibold text-foreground text-center">{cycle.name}</h4>
-                {cycle.schedule && cycle.opening && (
+                {cycle.schedule && (
                   <div className="text-center text-sm text-muted-foreground">
                     <p>{cycle.schedule}</p>
-                    <p className="text-xs">{cycle.opening}</p>
+                    {cycle.opening && (
+                      <p className="text-xs">{cycle.opening}</p>
+                    )}
                   </div>
                 )}
               </div>

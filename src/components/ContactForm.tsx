@@ -87,7 +87,7 @@ const ContactForm = ({ courses, initialCourse }: ContactFormProps) => {
     }
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://heart-logic.vercel.app/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

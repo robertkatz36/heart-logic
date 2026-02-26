@@ -1,37 +1,75 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import NavBar from '../components/NavBar.astro';
-import Hero from '../components/Hero.astro';
-import AboutLogic from '../components/AboutLogic.astro';
-import About from '../components/About';
-import Courses from '../components/Courses';
-import Articles from '../components/Articles.astro';
-import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer.astro';
-import Testimonials from '../components/Testimonials';
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/NavBar.astro";
+import Hero from "../components/Hero.astro";
+import AboutLogic from "../components/AboutLogic.astro";
+import About from "../components/About";
+import Courses from "../components/Courses";
+import Articles from "../components/Articles.astro";
+import ContactForm from "../components/ContactForm";
+import Footer from "../components/Footer.astro";
+import Testimonials from "../components/Testimonials";
 
 const courses = [
   {
+    title: "דרמה אינטואיטיבית",
+    subtitle: "קורס מבוא | ירושלים ורמת גן",
+    description:
+      "איך מתמודדים עם אתגרי הזמן?<br/>כיצד נמצא מרחב פנימי של ריפוי לנפש, שלווה ואיזון בתוך כאוס החיים המודרניים? הן בהקשר האישי והן בהקשר החברתי / לאומי.<br/><br/>בדרמה הופכים מרכיבי נפש פנימיים של האדם לדמויות במרחב ומציגים מעין אימגינציה של פנימיותו במרחב. הדרמה מאפשרת חשיפה של רבדים מגוונים ועמוקים יותר של מושא ההתבוננות.<br/><br/><strong>התעוררות למימד תודעה גבוה יותר וריפוי קבוצתי ואישי.</strong><br/><br/>מדיטטיבית ייחודית ברוח האנתרופוסופיה.",
+    cycles: [
+      {
+        name: "קבוצת לימוד | רמת גן",
+        schedule: "יום שישי 13.3.26 בשעה 10:00",
+        opening: "אחת לשבועיים | שעתיים וחצי למפגש ",
+      },
+      {
+        name: "קבוצת לימוד | ירושלים",
+        schedule: "יום שישי 6.3.26 בשעה 10:00",
+        opening: "אחת לשבועיים | שעתיים וחצי למפגש ",
+      },
+    ],
+    price: "1,290 ₪",
+    meetingInfo: "8 מפגשים פרונטליים",
+  },
+  {
     title: "לוגיקת הלב",
     subtitle: "קורס בסיס",
-    description: 'בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. את האוטומטים שמפעילים אותנו והופכים אותנו לתגובתיים. <strong>מתוכם</strong> <strong>נלמד להגיע לאיזון ושלווה פנימית,<br/>חווית חוש האמת והתעוררות אל האני הגבוה.</strong>',
-    cycles: [{ name: "מועד חורף 2026", schedule: "ימי חמישי ערב 19:30-21:30", opening: "פתיחה 27/11/25 - סיום 22/01/26" }],
-    price: "1,490 ₪"
+    description:
+      "בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. את האוטומטים שמפעילים אותנו והופכים אותנו לתגובתיים. <strong>מתוכם</strong> <strong>נלמד להגיע לאיזון ושלווה פנימית,<br/>חווית חוש האמת והתעוררות אל האני הגבוה.</strong>",
+    cycles: [
+      {
+        name: "בדוק תאריך עדכני",
+        schedule: "ימי חמישי ערב 19:30-21:30",
+      },
+    ],
+    price: "1,490 ₪",
   },
   {
     title: "מדיטציה דיאלוגית - זודיאק",
     subtitle: "קורס למתקדמים",
-    description: 'מדיטציה מעשית לדיאלוג עם העולם העל חושי ועם ישויות שנמצאות בו ובנו.<br/><strong>כלי עוצמתי להתפתחות ומחקר רוחני.</strong><br/>בקורס נכיר את 12 השלבים של המדיטציה ע"פ גלגל המזלות. ודרכם נחקור את העולם העל חושי סביבנו – ואת הקשר שלו איתנו ועם העולם החושי.',
-    cycles: [{ name: "מועד חורף 2026", schedule: "ימי שני ערב 19:30-21:30", opening: "פתיחה 24/11/25 - סיום 26/01/26" }],
-    price: "1,490 ₪"
+    description:
+      'מדיטציה מעשית לדיאלוג עם העולם העל חושי ועם ישויות שנמצאות בו ובנו.<br/><strong>כלי עוצמתי להתפתחות ומחקר רוחני.</strong><br/>בקורס נכיר את 12 השלבים של המדיטציה ע"פ גלגל המזלות. ודרכם נחקור את העולם העל חושי סביבנו – ואת הקשר שלו איתנו ועם העולם החושי.',
+    cycles: [
+      {
+        name: "בדוק תאריך עדכני",
+        schedule: "ימי שני ערב 19:30-21:30",
+      },
+    ],
+    price: "1,490 ₪",
   },
   {
     title: "הרפתקאות - אבירי השולחן העגול",
     subtitle: "קורס למתקדמים",
-    description: 'מי שמתרגל מדיטציה, משיג לרוב שלווה ואיזון בזמן התרגול.<br/>אבל מכיר גם את התופעה, כאשר יוצאים לעולם האמיתי,<br/>השלווה והאיזון הולכים לאיבוד!<br/>מטרת הקורס ללמוד ולתרגל - <strong>השגת רציפות תודעה גבוהה</strong> בחיי היום יום,<br/>גם מחוץ למדיטציה.<br/>נלמד טכניקות חדשות:<br/>לוגיקת הרצון, עבודה עם שרשראות.',
-    cycles: [{ name: "מועד חורף 2026", schedule: "ימי רביעי ערב 19:30-21:30", opening: "פתיחה 26/11/25 - סיום 21/01/26" }],
-    price: "1,490 ₪"
-  }
+    description:
+      "מי שמתרגל מדיטציה, משיג לרוב שלווה ואיזון בזמן התרגול.<br/>אבל מכיר גם את התופעה, כאשר יוצאים לעולם האמיתי,<br/>השלווה והאיזון הולכים לאיבוד!<br/>מטרת הקורס ללמוד ולתרגל - <strong>השגת רציפות תודעה גבוהה</strong> בחיי היום יום,<br/>גם מחוץ למדיטציה.<br/>נלמד טכניקות חדשות:<br/>לוגיקת הרצון, עבודה עם שרשראות.",
+    cycles: [
+      {
+        name: "בדוק תאריך עדכני",
+        schedule: "ימי רביעי ערב 19:30-21:30",
+      },
+    ],
+    price: "1,490 ₪",
+  },
 ];
 ---
 
@@ -41,8 +79,17 @@ const courses = [
     <NavBar />
 
     <div class="relative overflow-hidden">
-      <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-        <source src={`${import.meta.env.BASE_URL}hero-background.mp4`} type="video/mp4" />
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover"
+      >
+        <source
+          src={`${import.meta.env.BASE_URL}hero-background.mp4`}
+          type="video/mp4"
+        />
       </video>
       <div class="absolute inset-0 bg-white/50 z-[1]"></div>
       <Hero />

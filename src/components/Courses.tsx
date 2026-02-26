@@ -13,6 +13,7 @@ interface Course {
   description: string | React.ReactNode;
   cycles: Cycle[];
   price: string;
+  meetingInfo?: string;
 }
 
 interface CoursesProps {
@@ -47,19 +48,41 @@ const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {courses.map((course) => (
-            <CourseCard
-              key={course.title}
-              title={course.title}
-              subtitle={course.subtitle}
-              description={course.description}
-              cycles={course.cycles}
-              price={course.price}
-              delay={courses.indexOf(course) * 150}
-              onRegister={handleCourseRegister}
-            />
-          ))}
+        <div className="flex flex-col gap-8 max-w-5xl mx-auto">
+          {/* Top row: 1 card centered */}
+          <div className="flex justify-center">
+            {courses.slice(0, 1).map((course, index) => (
+              <div key={course.title} className="w-full max-w-md">
+                <CourseCard
+                  title={course.title}
+                  subtitle={course.subtitle}
+                  description={course.description}
+                  cycles={course.cycles}
+                  price={course.price}
+                  meetingInfo={course.meetingInfo}
+                  delay={0}
+                  onRegister={handleCourseRegister}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom row: 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {courses.slice(1).map((course, index) => (
+              <CourseCard
+                key={course.title}
+                title={course.title}
+                subtitle={course.subtitle}
+                description={course.description}
+                cycles={course.cycles}
+                price={course.price}
+                meetingInfo={course.meetingInfo}
+                delay={(index + 1) * 150}
+                onRegister={handleCourseRegister}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
