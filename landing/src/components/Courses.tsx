@@ -9,11 +9,12 @@ interface Cycle {
 
 interface Course {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   description: string | React.ReactNode;
   cycles: Cycle[];
   price: string;
   meetingInfo?: string;
+  featured?: boolean;
 }
 
 interface CoursesProps {
@@ -51,8 +52,11 @@ const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
         <div className="flex flex-col gap-8 max-w-5xl mx-auto">
           {/* Top row: 1 card centered */}
           <div className="flex justify-center">
-            {courses.slice(0, 1).map((course, index) => (
-              <div key={course.title} className="w-full max-w-md">
+            {courses.slice(0, 1).map((course) => (
+              <div
+                key={course.title}
+                className={`w-full ${course.featured ? "max-w-3xl" : "max-w-md"}`}
+              >
                 <CourseCard
                   title={course.title}
                   subtitle={course.subtitle}
@@ -61,6 +65,7 @@ const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
                   price={course.price}
                   meetingInfo={course.meetingInfo}
                   delay={0}
+                  featured={course.featured}
                   onRegister={handleCourseRegister}
                 />
               </div>
@@ -79,6 +84,7 @@ const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
                 price={course.price}
                 meetingInfo={course.meetingInfo}
                 delay={(index + 1) * 150}
+                featured={course.featured}
                 onRegister={handleCourseRegister}
               />
             ))}

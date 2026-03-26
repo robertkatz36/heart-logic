@@ -1,0 +1,6 @@
+name = "heart-logic-api"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "public"
+
+[env.production]
+branch = "astro"

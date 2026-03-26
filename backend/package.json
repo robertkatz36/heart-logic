@@ -4,9 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "pages:dev": "wrangler pages dev public",
+    "pages:deploy": "wrangler pages deploy public",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "resend": "^6.4.0"
+  },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "@cloudflare/workers-types": "^4.20250525.0",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.0.0"
   }
 }

@@ -12,6 +12,22 @@ import Testimonials from "../components/Testimonials";
 
 const courses = [
   {
+    featured: true,
+    title: "לוח השנה לנפש",
+    description: `השבוע הראשון מתחיל באביב, יום ראשון של הפסחא,<br/>יום הקימה לתחייה השנה הוא חל ב- 5.4.26 (יום ראשון).<br/><br/>לוח השנה לנפש הוא מסמך רוחני של 52 וורסים שלוקחים את האדם להתנסות ייחודית של הנפש כל שבוע מחדש בהדהוד עם התנועה המאקרוקוסמית של העולם.<br/><br/>הוורסים נכתבו ע״י המתקדש באופן כזה שמאחורי כל וורס קיים כח רוחני ייחודי, אלא שכח רוחני זה אינו מתגלה לחושים החיצוניים של האדם, בקריאה שכלתנית &quot;רגילה&quot;.<br/><br/>כח רוחני — הוא ישות רוח, שמתגלה רק לחושים הפנימיים המתפתחים של האדם. זו ישות שרוצה להתגלות לכל אדם, אם רק ירצה לכוון את החוש הפנימי.<br/><br/>כך הופכים הוורסים להתנסות מרגשת של מפגש עם ישויות רוח שמכוונות את האדם בחייו המעשיים, שבוע אחרי שבוע.<br/><br/>החיים מתמלאים במשמעות, בצבעים חדשים, באפשרויות חדשות.`,
+    cycles: [
+      {
+        name: "מפגשים שבועיים | זום",
+        schedule:
+          "ימי ראשון בזום החל מה-5.4.26 — למשך כל השנה",
+        opening:
+          "אין התחייבות לנוכחות שבועית · שעות המפגש 20:00–21:30 · אפריל התנסות ללא תשלום",
+      },
+    ],
+    price: "195 ₪ לחודש",
+    meetingInfo: "מעגל שנתי בזום",
+  },
+  {
     title: "דרמה אינטואיטיבית",
     subtitle: "קורס מבוא | ירושלים ורמת גן",
     description:
@@ -103,6 +119,10 @@ const courses = [
 
     <section id="contact" class="py-20 px-4 bg-muted/30">
       <div class="container mx-auto">
+        <p class="max-w-2xl mx-auto mb-6 text-center text-sm text-muted-foreground leading-relaxed">
+          <span class="font-semibold text-foreground">קורסים זמינים: </span>
+          {courses.map((c) => c.title).join(" · ")}
+        </p>
         <ContactForm courses={courses} client:only="react" />
       </div>
     </section>

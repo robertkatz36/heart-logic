@@ -1,17 +1,10 @@
 import { useState, useId, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, User } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 
 interface Cycle {
@@ -87,7 +80,7 @@ const ContactForm = ({ courses, initialCourse }: ContactFormProps) => {
     }
 
     try {
-      const response = await fetch("https://heart-logic.vercel.app/api/contact", {
+      const response = await fetch(`${import.meta.env.PUBLIC_CONTACT_API_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -174,21 +167,25 @@ const ContactForm = ({ courses, initialCourse }: ContactFormProps) => {
               <span>הקורס המבוקש</span>
               <Mail className="w-4 h-4 text-primary" />
             </Label>
-            <Select
+            <select
+              id={courseId}
               value={formData.course}
-              onValueChange={(value) => setFormData({ ...formData, course: value })}
+              onChange={(e) => setFormData({ ...formData, course: e.target.value })}
+              dir="rtl"
+              className={cn(
+                "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background",
+                "text-right focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+              )}
             >
-              <SelectTrigger className="text-right" dir="rtl">
-                <SelectValue placeholder="בחר קורס" />
-              </SelectTrigger>
-              <SelectContent>
-                {courses.map((course) => (
-                  <SelectItem key={course.title} value={course.title} className="text-right">
-                    {course.title}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              <option value="" disabled>
+                בחר קורס
+              </option>
+              {courses.map((course) => (
+                <option key={course.title} value={course.title}>
+                  {course.title}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* כפתור שליחה */}

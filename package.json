@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "workerd", "sharp"]
+  },
   "scripts": {
     "dev": "pnpm --filter landing dev",
     "build": "pnpm --filter landing build",

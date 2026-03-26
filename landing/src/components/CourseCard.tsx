@@ -15,10 +15,11 @@ interface CourseCardProps {
   price: string;
   meetingInfo?: string;
   delay?: number;
+  featured?: boolean;
   onRegister?: (courseTitle: string) => void;
 }
 
-const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo = "10 מפגשים בזום", delay = 0, onRegister }: CourseCardProps) => {
+const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo = "10 מפגשים בזום", delay = 0, featured = false, onRegister }: CourseCardProps) => {
   const handleRegister = () => {
     if (onRegister) {
       onRegister(title);
@@ -39,21 +40,40 @@ const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo =
 
   return (
     <article
-      className="rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/30 hover:border-white/40 animate-fade-in backdrop-blur-md flex flex-col justify-between"
+      className={`rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in backdrop-blur-md flex flex-col justify-between ${
+        featured
+          ? "p-9 md:p-10 border-2 border-[hsl(265,55%,45%)]/45 ring-2 ring-[hsl(265,55%,45%)]/20 shadow-[0_12px_48px_-8px_rgba(90,50,120,0.25)] hover:border-[hsl(265,55%,45%)]/60"
+          : "p-8 border border-white/30 hover:border-white/40"
+      }`}
       style={{
         animationDelay: `${delay}ms`,
-        background: 'linear-gradient(135deg, rgba(252, 212, 200, 0.3) 0%, rgba(247, 201, 186, 0.4) 50%, rgba(252, 212, 200, 0.3) 100%)',
-        boxShadow: '0 8px 32px 0 rgba(252, 212, 200, 0.2), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3)'
+        background: featured
+          ? "linear-gradient(145deg, rgba(255, 252, 250, 0.92) 0%, rgba(245, 230, 255, 0.45) 40%, rgba(230, 245, 255, 0.4) 100%)"
+          : "linear-gradient(135deg, rgba(252, 212, 200, 0.3) 0%, rgba(247, 201, 186, 0.4) 50%, rgba(252, 212, 200, 0.3) 100%)",
+        boxShadow: featured
+          ? "0 12px 48px -8px rgba(90, 50, 120, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.6)"
+          : "0 8px 32px 0 rgba(252, 212, 200, 0.2), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3)",
       }}
     >
       <div>
         <div className="mb-4">
+          {featured && (
+            <div className="flex justify-center mb-3">
+              <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-[hsl(265,60%,48%)] to-[hsl(280,55%,42%)] text-white text-sm font-bold rounded-full shadow-md">
+                קורס שנתי
+              </span>
+            </div>
+          )}
           {subtitle && (
             <span className="inline-block px-4 py-1 bg-[hsl(265,70%,50%)]/10 text-[hsl(265,70%,50%)] text-sm font-semibold rounded-full mb-4">
               {subtitle}
             </span>
           )}
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center min-h-[5rem] flex items-start justify-center">
+          <h3
+            className={`font-bold text-foreground mb-4 text-center min-h-[5rem] flex items-start justify-center ${
+              featured ? "text-3xl md:text-4xl tracking-tight" : "text-2xl md:text-3xl"
+            }`}
+          >
             {title}
           </h3>
         </div>
