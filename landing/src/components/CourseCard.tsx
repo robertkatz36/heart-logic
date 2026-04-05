@@ -1,6 +1,9 @@
 import { Calendar } from "lucide-react";
 import React from "react";
 
+import WhatsAppIcon from "./icons/WhatsAppIcon";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+
 interface Cycle {
   name: string;
   schedule?: string;
@@ -16,10 +19,11 @@ interface CourseCardProps {
   meetingInfo?: string;
   delay?: number;
   featured?: boolean;
+  whatsappLink?: string;
   onRegister?: (courseTitle: string) => void;
 }
 
-const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo = "10 מפגשים בזום", delay = 0, featured = false, onRegister }: CourseCardProps) => {
+const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo = "10 מפגשים בזום", delay = 0, featured = false, whatsappLink, onRegister }: CourseCardProps) => {
   const handleRegister = () => {
     if (onRegister) {
       onRegister(title);
@@ -40,11 +44,10 @@ const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo =
 
   return (
     <article
-      className={`rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in backdrop-blur-md flex flex-col justify-between ${
-        featured
-          ? "p-9 md:p-10 border-2 border-[hsl(265,55%,45%)]/45 ring-2 ring-[hsl(265,55%,45%)]/20 shadow-[0_12px_48px_-8px_rgba(90,50,120,0.25)] hover:border-[hsl(265,55%,45%)]/60"
-          : "p-8 border border-white/30 hover:border-white/40"
-      }`}
+      className={`rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in backdrop-blur-md flex flex-col justify-between ${featured
+        ? "p-9 md:p-10 border-2 border-[hsl(265,55%,45%)]/45 ring-2 ring-[hsl(265,55%,45%)]/20 shadow-[0_12px_48px_-8px_rgba(90,50,120,0.25)] hover:border-[hsl(265,55%,45%)]/60"
+        : "p-8 border border-white/30 hover:border-white/40"
+        }`}
       style={{
         animationDelay: `${delay}ms`,
         background: featured
@@ -70,9 +73,8 @@ const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo =
             </span>
           )}
           <h3
-            className={`font-bold text-foreground mb-4 text-center min-h-[5rem] flex items-start justify-center ${
-              featured ? "text-3xl md:text-4xl tracking-tight" : "text-2xl md:text-3xl"
-            }`}
+            className={`font-bold text-foreground mb-4 text-center min-h-[5rem] flex items-start justify-center ${featured ? "text-3xl md:text-4xl tracking-tight" : "text-2xl md:text-3xl"
+              }`}
           >
             {title}
           </h3>
@@ -121,13 +123,38 @@ const CourseCard = ({ title, subtitle, description, cycles, price, meetingInfo =
         <div className="pt-6 border-t border-border">
           <div className="flex flex-wrap items-center justify-center gap-5">
             <span className="text-2xl font-bold text-primary flex-shrink-0">מחיר: {price}</span>
-            <button
-              type="button"
-              onClick={handleRegister}
-              className="px-6 py-3 bg-gradient-spiritual text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-md flex-shrink-0"
-            >
-              הרשמה
-            </button>
+            <div className="flex flex-col md:flex-row w-full md:w-auto gap-2">
+              <button
+                type="button"
+                onClick={handleRegister}
+                className="px-6 py-3 bg-gradient-spiritual text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-md w-full md:w-auto flex-shrink-0"
+              >
+                הרשמה
+              </button>
+              {whatsappLink && (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:opacity-90 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                        aria-label="WhatsApp"
+                      >
+                        <span className="md:hidden text-sm font-semibold text-foreground/80 whitespace-nowrap">
+                          להצטרפות לקבוצת הקורס
+                        </span>
+                        <WhatsAppIcon className="w-10 h-10 md:w-12 md:h-12" />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p>להצטרפות לקבוצת הקורס</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
+            </div>
           </div>
         </div>
       </div>

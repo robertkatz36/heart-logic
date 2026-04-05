@@ -15,6 +15,7 @@ interface Course {
   price: string;
   meetingInfo?: string;
   featured?: boolean;
+  whatsappLink?: string;
 }
 
 interface CoursesProps {
@@ -66,6 +67,7 @@ const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
                   meetingInfo={course.meetingInfo}
                   delay={0}
                   featured={course.featured}
+                  whatsappLink={course.whatsappLink}
                   onRegister={handleCourseRegister}
                 />
               </div>
@@ -85,6 +87,7 @@ const Courses = ({ courses, onCourseRegister }: CoursesProps) => {
                 meetingInfo={course.meetingInfo}
                 delay={(index + 1) * 150}
                 featured={course.featured}
+                whatsappLink={course.whatsappLink}
                 onRegister={handleCourseRegister}
               />
             ))}
