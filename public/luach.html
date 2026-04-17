@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>לוח השנה לנפש | לוגיקת הלב</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50; 
+      --accent-color: #3498db;
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --light-bg: #f8f9fa;
+      --whatsapp-green: #25D366;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      color: var(--text-color);
+      background: var(--bg-color);
+      line-height: 1.8;
+    }
+
+    .urgency-bar {
+      background: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 15px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    header {
+      padding: 70px 20px;
+      text-align: center;
+      background: var(--light-bg);
+    }
+
+    h1 { font-size: 45px; color: var(--primary-color); font-weight: 300; margin: 0; }
+    .subtitle { font-size: 22px; color: var(--accent-color); margin-top: 10px; }
+
+    .container { max-width: 850px; margin: auto; padding: 40px 20px; }
+
+    .quote-box {
+      border-right: 4px solid var(--accent-color);
+      padding: 25px 40px;
+      margin: 40px 0;
+      background: #fff;
+      font-style: italic;
+      font-size: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .quote-source {
+      display: block;
+      margin-top: 15px;
+      font-size: 14px;
+      font-style: normal;
+      color: #7f8c8d;
+      font-weight: bold;
+    }
+
+    h2 { color: var(--primary-color); font-weight: 400; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 50px; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      background: #fff;
+      padding: 10px;
+    }
+
+    .feature-item strong { color: var(--accent-color); display: block; margin-bottom: 5px; font-size: 19px; }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .price-card {
+      border: 1px solid #eee;
+      padding: 40px 30px;
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--accent-color);
+      box-shadow: 0 10px 30px rgba(52, 152, 219, 0.08);
+    }
+
+    .badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-color);
+      color: white;
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .price-val { font-size: 42px; font-weight: bold; color: var(--primary-color); margin: 15px 0 5px; }
+    .price-sub { display: block; font-size: 14px; color: #7f8c8d; margin-bottom: 25px; }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .btn-primary { background: var(--primary-color); color: white; width: 100%; box-sizing: border-box; }
+    .btn-primary:hover { background: var(--accent-color); }
+
+    .btn-whatsapp { 
+      background: var(--whatsapp-green); color: white; margin: 40px auto; display: block; max-width: 380px;
+      font-size: 19px; border-radius: 50px;
+    }
+    .btn-whatsapp:hover { background: #1ebd5b; transform: translateY(-2px); }
+
+    footer {
+      margin-top: 80px;
+      padding: 60px 20px;
+      text-align: center;
+      background: var(--light-bg);
+      color: #7f8c8d;
+    }
+
+    @media (max-width: 700px) { .features-grid, .pricing { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="urgency-bar">
+    ✨ לבקשתכם: ההרשמה המוקדמת הוארכה עד ה-19.4 בחצות!
+  </div>
+
+  <header>
+    <h1>לוח השנה לנפש</h1>
+    <div class="subtitle">מסע של התעוררות דרך לוגיקת הלב</div>
+  </header>
+
+  <div class="container">
+    
+    <div class="quote-box">
+      "כאשר ממרחבי החלל<br>
+      השמש דוברת אל חוש האדם<br>
+      ושמחה ממעמקי הנפש<br>
+      מתאחדת עם האור בראיה..."
+      <span class="quote-source">— רודולף שטיינר, לוח השנה לנפש (וורס 1), תרגום: אבישי גרשוני</span>
+    </div>
+
+    <section>
+      <h2>מה קורה בקורס?</h2>
+      <p>
+        הקורס מזמין אתכם לעצור פעם בשבוע ולהקשיב למקצב הפנימי שלכם. בעזרת 52 הוורסים של שטיינר ושיטת <strong>לוגיקת הלב</strong>, אנו הופכים את הידע האנתרופוסופי לכלי עבודה חי ביומיום.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <strong>העמקה שבועית</strong>
+          בכל יום ראשון נתמקד בוורס השבועי, נחקור את משמעותו ונראה כיצד הוא מהדהד בחיינו כאן ועכשיו.
+        </div>
+        <div class="feature-item">
+          <strong>מרחב שיתוף ושיח</strong>
+          הלמידה בזום מאפשרת מפגש עם אנשים נוספים בדרך, שיתוף בתובנות ויצירת קהילה לומדת ותומכת.
+        </div>
+        <div class="feature-item">
+          <strong>חופש וגמישות</strong>
+          כל המפגשים מוקלטים וזמינים עבורכם בספרייה ייעודית, כך שתוכלו לחזור אליהם או להשלים מפגשים שהחסרתם.
+        </div>
+        <div class="feature-item">
+          <strong>חיבור למרכז</strong>
+          המטרה היא לא רק לימוד אינטלקטואלי, אלא יצירת עוגן פנימי ושקט בתוך סערת החיים.
+        </div>
+      </div>
+    </section>
+
+    <div style="background: var(--light-bg); padding: 30px; border-radius: 8px; margin-top: 40px; border-right: 5px solid var(--accent-color);">
+      <h3 style="margin-top: 0; color: var(--primary-color);">הצטרפו אלינו באפריל - ללא עלות</h3>
+      <p>
+        אנו מזמינים אתכם לשני המפגשים הקרובים בזום כדי לחוות את צורת העבודה, להתרשם מהקבוצה ולהחליט אם המסע הזה מתאים לכם. <strong>התשלום מתחיל רק מחודש מאי.</strong>
+      </p>
+    </div>
+
+    <div class="pricing">
+      <div class="price-card featured">
+        <div class="badge">מומלץ</div>
+        <h3>מסלול שנתי</h3>
+        <p>בהתחייבות לשנה - העמקה מלאה</p>
+        <div class="price-val">195 ₪</div>
+        <span class="price-sub">במקום 245 ₪ (עד ה-19.4)</span>
+        <a href="https://mrng.to/OcDMmH5rFL" class="btn btn-primary">להרשמה למסלול השנתי</a>
+      </div>
+
+      <div class="price-card">
+        <h3>מסלול גמיש</h3>
+        <p>ללא התחייבות (ביטול בכל חודש)</p>
+        <div class="price-val">295 ₪</div>
+        <span class="price-sub">במקום 335 ₪ (עד ה-19.4)</span>
+        <a href="https://mrng.to/3MOtpZA6sR" class="btn btn-primary" style="background: #95a5a6;">להרשמה למסלול הגמיש</a>
+      </div>
+    </div>
+
+    <a href="https://chat.whatsapp.com/IhOzWts0stDEUppnG1gDms" target="_blank" class="btn btn-whatsapp">הצטרפות לקבוצת הווצאפ (חינם)</a>
+
+    <footer>
+      <p>לוגיקת הלב — רוברט כץ</p>
+      <div style="margin-top: 15px;">
+        <a href="http://www.heart-logic.com" style="color: var(--accent-color); margin: 0 10px; text-decoration: none;">לאתר הראשי</a>
+        <a href="https://www.youtube.com/@HeartLogic" style="color: var(--accent-color); margin: 0 10px; text-decoration: none;">ערוץ היוטיוב</a>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
