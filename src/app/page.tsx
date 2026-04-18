@@ -21,16 +21,31 @@ export default function HomePage() {
 
   const courses = [
     {
+      title: "לוח השנה לנפש",
+      subtitle: "קורס חדש - אפריל 2026",
+      description: (
+        <>
+          מסע שבועי בעקבות 52 הוורסים של רודולף שטיינר. 
+          עבודה פנימית עמוקה המשלבת את יסודות האנתרופוסופיה עם לוגיקת הלב.
+          <br />
+          <strong>חודש אפריל ללא עלות למצטרפים עכשיו.</strong>
+        </>
+      ),
+      cycles: [
+        {
+          name: "מועד אביב 2026",
+          schedule: "ימי ראשון בערב (בזום)",
+          opening: "המפגשים הקרובים: 12.4 ו-19.4"
+        }
+      ],
+      price: "195 ₪ לחודש"
+    },
+    {
       title: "לוגיקת הלב",
       subtitle: "קורס בסיס",
       description: (
         <>
-          בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. את האוטומטים שמפעילים אותנו והופכים אותנו לתגובתיים. <strong>מתוכם</strong>{" "}
-          <strong>
-            נלמד להגיע לאיזון ושלווה פנימית,
-            <br />
-            חווית חוש האמת והתעוררות אל האני הגבוה.
-          </strong>
+          בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. <strong>מתוכם נלמד להגיע לאיזון ושלווה פנימית.</strong>
         </>
       ),
       cycles: [
@@ -49,9 +64,7 @@ export default function HomePage() {
         <>
           מדיטציה מעשית לדיאלוג עם העולם העל חושי ועם ישויות שנמצאות בו ובנו.
           <br />
-          <strong>כלי עוצמתי להתפתחות ומחקר רוחני.</strong>
-          <br />
-          בקורס נכיר את 12 השלבים של המדיטציה ע"פ גלגל המזלות. ודרכם נחקור את העולם העל חושי סביבנו – ואת הקשר שלו איתנו ועם העולם החושי.
+          <strong>כלי עוצמתי להתפתחות ומחקר רוחני ע"פ גלגל המזלות.</strong>
         </>
       ),
       cycles: [
@@ -62,43 +75,11 @@ export default function HomePage() {
         }
       ],
       price: "1,490 ₪"
-    },
-    {
-      title: "הרפתקאות - אבירי השולחן העגול",
-      subtitle: "קורס למתקדמים",
-      description: (
-        <>
-          מי שמתרגל מדיטציה, משיג לרוב שלווה ואיזון בזמן התרגול.
-          <br />
-          אבל מכיר גם את התופעה, כאשר יוצאים לעולם האמיתי,
-          <br />
-          השלווה והאיזון הולכים לאיבוד!
-          <br />
-          מטרת הקורס ללמוד ולתרגל - <strong>השגת רציפות תודעה גבוהה</strong> בחיי היום יום,
-          <br />
-          גם מחוץ למדיטציה.
-          <br />
-          נלמד טכניקות חדשות:
-          <br />
-          לוגיקת הרצון, עבודה עם שרשראות.
-        </>
-      ),
-      cycles: [
-        {
-          name: "מועד חורף 2026",
-          schedule: "ימי רביעי ערב 19:30-21:30",
-          opening: "פתיחה 26/11/25 - סיום 21/01/26"
-        }
-      ],
-      price: "1,490 ₪"
     }
   ];
 
   return (
     <div className="min-h-screen mesh-gradient-soft">
-      <div className="sr-only">
-        <h1>בדיקה</h1>
-      </div>
       <NavBar />
 
       <div className="relative overflow-hidden">
@@ -117,13 +98,13 @@ export default function HomePage() {
         <div className="relative z-[2]">
           <Hero />
           
-          {/* הכפתור החדש לקורס לוח השנה לנפש */}
+          {/* הכפתור המעודכן - תכלת עדין ויציב */}
           <div className="flex justify-center pb-12 -mt-8">
             <a 
               href="/luach.html" 
-              className="bg-[#1D9E75] hover:bg-[#157a5b] text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all transform hover:scale-105 text-center text-xl border-2 border-white/20 animate-bounce"
+              className="bg-[#8ecae6] hover:bg-[#219ebc] text-[#023047] font-bold py-4 px-10 rounded-full shadow-lg transition-all transform hover:scale-105 text-center text-xl border-2 border-white"
             >
-              חדש! קורס "לוח השנה לנפש" - להרשמה ופרטים
+              להרשמה ופרטים: קורס לוח השנה לנפש
             </a>
           </div>
           
@@ -136,7 +117,6 @@ export default function HomePage() {
       <Courses courses={courses} onCourseRegister={handleCourseRegister} />
 
       <Testimonials />
-
       <Articles />
 
       <section id="contact" className="py-20 px-4 bg-muted/30">
