@@ -119,7 +119,10 @@ export default function HomePage() {
       <About />
       <Courses courses={courses} onCourseRegister={handleCourseRegister} />
       <Testimonials />
+      
+      {/* כאן נמצאים המאמרים והוידאו עם הקישור למרחב מוגן */}
       <Articles />
+
       <section id="contact" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <ContactForm ref={contactFormRef} courses={courses} />
