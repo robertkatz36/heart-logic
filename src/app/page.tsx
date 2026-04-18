@@ -21,26 +21,6 @@ export default function HomePage() {
 
   const courses = [
     {
-      title: "לוח השנה לנפש",
-      subtitle: "קורס חדש - אפריל 2026",
-      description: (
-        <>
-          מסע שבועי בעקבות 52 הוורסים של רודולף שטיינר. 
-          עבודה פנימית עמוקה המשלבת את יסודות האנתרופוסופיה עם לוגיקת הלב.
-          <br />
-          <strong>חודש אפריל ללא עלות למצטרפים עכשיו.</strong>
-        </>
-      ),
-      cycles: [
-        {
-          name: "מועד אביב 2026",
-          schedule: "ימי ראשון בערב (בזום)",
-          opening: "המפגשים הקרובים: 12.4 ו-19.4"
-        }
-      ],
-      price: "195 ₪ לחודש"
-    },
-    {
       title: "לוגיקת הלב",
       subtitle: "קורס בסיס",
       description: (
@@ -92,23 +72,39 @@ export default function HomePage() {
         }
       ],
       price: "1,490 ₪"
+    },
+    {
+      title: "לוח השנה לנפש",
+      subtitle: "קורס חדש - אפריל 2026",
+      description: (
+        <>
+          מסע שבועי בעקבות 52 הוורסים של רודולף שטיינר. 
+          עבודה פנימית עמוקה המשלבת את יסודות האנתרופוסופיה עם לוגיקת הלב.
+          <br />
+          <strong>חודש אפריל ללא עלות למצטרפים עכשיו.</strong>
+        </>
+      ),
+      cycles: [
+        {
+          name: "מועד אביב 2026",
+          schedule: "ימי ראשון בערב (בזום)",
+          opening: "המפגשים הקרובים: 12.4 ו-19.4"
+        }
+      ],
+      price: "195 ₪ לחודש"
     }
   ];
 
   return (
     <div className="min-h-screen mesh-gradient-soft">
       <NavBar />
-
       <div className="relative overflow-hidden">
         <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
           <source src="/hero-background.mp4" type="video/mp4" />
         </video>
-
         <div className="absolute inset-0 bg-white/50 z-[1]"></div>
-
         <div className="relative z-[2]">
           <Hero />
-          
           <div className="flex justify-center pb-12 -mt-8">
             <a 
               href="/luach.html" 
@@ -117,22 +113,18 @@ export default function HomePage() {
               להרשמה ופרטים: קורס לוח השנה לנפש
             </a>
           </div>
-          
           <AboutLogic />
         </div>
       </div>
-
       <About />
       <Courses courses={courses} onCourseRegister={handleCourseRegister} />
       <Testimonials />
       <Articles />
-
       <section id="contact" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <ContactForm ref={contactFormRef} courses={courses} />
         </div>
       </section>
-
       <Footer />
     </div>
   );
