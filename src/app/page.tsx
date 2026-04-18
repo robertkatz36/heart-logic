@@ -25,7 +25,12 @@ export default function HomePage() {
       subtitle: "קורס בסיס",
       description: (
         <>
-          בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. את האוטומטים שמפעילים אותנו והופכים אותנו לתגובתיים. <strong>מתוכם נלמד להגיע לאיזון ושלווה פנימית.</strong>
+          בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. את האוטומטים שמפעילים אותנו והופכים אותנו לתגובתיים. <strong>מתוכם</strong>{" "}
+          <strong>
+            נלמד להגיע לאיזון ושלווה פנימית,
+            <br />
+            חווית חוש האמת והתעוררות אל האני הגבוה.
+          </strong>
         </>
       ),
       cycles: [
@@ -44,7 +49,9 @@ export default function HomePage() {
         <>
           מדיטציה מעשית לדיאלוג עם העולם העל חושי ועם ישויות שנמצאות בו ובנו.
           <br />
-          <strong>כלי עוצמתי להתפתחות ומחקר רוחני ע"פ גלגל המזלות.</strong>
+          <strong>כלי עוצמתי להתפתחות ומחקר רוחני.</strong>
+          <br />
+          בקורס נכיר את 12 השלבים של המדיטציה ע"פ גלגל המזלות. ודרכם נחקור את העולם העל חושי סביבנו – ואת הקשר שלו איתנו ועם העולם החושי.
         </>
       ),
       cycles: [
@@ -61,7 +68,19 @@ export default function HomePage() {
       subtitle: "קורס למתקדמים",
       description: (
         <>
-          מטרת הקורס ללמוד ולתרגל - <strong>השגת רציפות תודעה גבוהה</strong> בחיי היום יום, גם מחוץ למדיטציה. נלמד טכניקות חדשות: לוגיקת הרצון ועבודה עם שרשראות.
+          מי שמתרגל מדיטציה, משיג לרוב שלווה ואיזון בזמן התרגול.
+          <br />
+          אבל מכיר גם את התופעה, כאשר יוצאים לעולם האמיתי,
+          <br />
+          השלווה והאיזון הולכים לאיבוד!
+          <br />
+          מטרת הקורס ללמוד ולתרגל - <strong>השגת רציפות תודעה גבוהה</strong> בחיי היום יום,
+          <br />
+          גם מחוץ למדיטציה.
+          <br />
+          נלמד טכניקות חדשות:
+          <br />
+          לוגיקת הרצון, עבודה עם שרשראות.
         </>
       ),
       cycles: [
@@ -72,39 +91,37 @@ export default function HomePage() {
         }
       ],
       price: "1,490 ₪"
-    },
-    {
-      title: "לוח השנה לנפש",
-      subtitle: "קורס חדש - אפריל 2026",
-      description: (
-        <>
-          מסע שבועי בעקבות 52 הוורסים של רודולף שטיינר. 
-          עבודה פנימית עמוקה המשלבת את יסודות האנתרופוסופיה עם לוגיקת הלב.
-          <br />
-          <strong>חודש אפריל ללא עלות למצטרפים עכשיו.</strong>
-        </>
-      ),
-      cycles: [
-        {
-          name: "מועד אביב 2026",
-          schedule: "ימי ראשון בערב (בזום)",
-          opening: "המפגשים הקרובים: 12.4 ו-19.4"
-        }
-      ],
-      price: "195 ₪ לחודש"
     }
   ];
 
   return (
     <div className="min-h-screen mesh-gradient-soft">
+      {/* Hidden element for accessibility/SEO */}
+      <div className="sr-only">
+        <h1>בדיקה</h1>
+      </div>
       <NavBar />
+
+      {/* Shared video background for Hero and AboutLogic */}
       <div className="relative overflow-hidden">
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
+        {/* Background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
           <source src="/hero-background.mp4" type="video/mp4" />
         </video>
+
+        {/* White overlay with 0.5 transparency */}
         <div className="absolute inset-0 bg-white/50 z-[1]"></div>
+
         <div className="relative z-[2]">
           <Hero />
+
+          {/* הכפתור בתכלת עדין - הוספה בלבד ללא שינוי שאר הקוד */}
           <div className="flex justify-center pb-12 -mt-8">
             <a 
               href="/luach.html" 
@@ -113,21 +130,30 @@ export default function HomePage() {
               להרשמה ופרטים: קורס לוח השנה לנפש
             </a>
           </div>
+
           <AboutLogic />
         </div>
       </div>
+
+      {/* About Section */}
       <About />
+
+      {/* Courses Section */}
       <Courses courses={courses} onCourseRegister={handleCourseRegister} />
+
+      {/* Testimonials Section */}
       <Testimonials />
-      
-      {/* כאן נמצאים המאמרים והוידאו עם הקישור למרחב מוגן */}
+
+      {/* Articles and Recorded Lectures Section */}
       <Articles />
 
+      {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <ContactForm ref={contactFormRef} courses={courses} />
         </div>
       </section>
+
       <Footer />
     </div>
   );
