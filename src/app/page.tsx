@@ -96,15 +96,12 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen mesh-gradient-soft">
-      {/* Hidden element for accessibility/SEO */}
       <div className="sr-only">
         <h1>בדיקה</h1>
       </div>
       <NavBar />
 
-      {/* Shared video background for Hero and AboutLogic */}
       <div className="relative overflow-hidden">
-        {/* Background video */}
         <video
           autoPlay
           loop
@@ -115,26 +112,33 @@ export default function HomePage() {
           <source src="/hero-background.mp4" type="video/mp4" />
         </video>
 
-        {/* White overlay with 0.5 transparency */}
         <div className="absolute inset-0 bg-white/50 z-[1]"></div>
 
-        <Hero />
-        <AboutLogic />
+        <div className="relative z-[2]">
+          <Hero />
+          
+          {/* הכפתור החדש לקורס לוח השנה לנפש */}
+          <div className="flex justify-center pb-12 -mt-8">
+            <a 
+              href="/luach.html" 
+              className="bg-[#1D9E75] hover:bg-[#157a5b] text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all transform hover:scale-105 text-center text-xl border-2 border-white/20 animate-bounce"
+            >
+              חדש! קורס "לוח השנה לנפש" - להרשמה ופרטים
+            </a>
+          </div>
+          
+          <AboutLogic />
+        </div>
       </div>
 
-      {/* About Section */}
       <About />
 
-      {/* Courses Section */}
       <Courses courses={courses} onCourseRegister={handleCourseRegister} />
 
-      {/* Testimonials Section */}
       <Testimonials />
 
-      {/* Articles and Recorded Lectures Section */}
       <Articles />
 
-      {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <ContactForm ref={contactFormRef} courses={courses} />
@@ -145,4 +149,3 @@ export default function HomePage() {
     </div>
   );
 }
-
