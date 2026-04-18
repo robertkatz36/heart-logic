@@ -45,7 +45,7 @@ export default function HomePage() {
       subtitle: "קורס בסיס",
       description: (
         <>
-          בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. <strong>מתוכם נלמד להגיע לאיזון ושלווה פנימית.</strong>
+          בקורס זה נלמד את טכניקת ההחצנה, שהיא הבסיס למדיטציה דיאלוגית. נכיר את עולמנו האמוציונלי, הסימפטיות והאנטיפטיות. את האוטומטים שמפעילים אותנו והופכים אותנו לתגובתיים. <strong>מתוכם נלמד להגיע לאיזון ושלווה פנימית.</strong>
         </>
       ),
       cycles: [
@@ -75,6 +75,23 @@ export default function HomePage() {
         }
       ],
       price: "1,490 ₪"
+    },
+    {
+      title: "הרפתקאות - אבירי השולחן העגול",
+      subtitle: "קורס למתקדמים",
+      description: (
+        <>
+          מטרת הקורס ללמוד ולתרגל - <strong>השגת רציפות תודעה גבוהה</strong> בחיי היום יום, גם מחוץ למדיטציה. נלמד טכניקות חדשות: לוגיקת הרצון ועבודה עם שרשראות.
+        </>
+      ),
+      cycles: [
+        {
+          name: "מועד חורף 2026",
+          schedule: "ימי רביעי ערב 19:30-21:30",
+          opening: "פתיחה 26/11/25 - סיום 21/01/26"
+        }
+      ],
+      price: "1,490 ₪"
     }
   ];
 
@@ -83,13 +100,7 @@ export default function HomePage() {
       <NavBar />
 
       <div className="relative overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
           <source src="/hero-background.mp4" type="video/mp4" />
         </video>
 
@@ -98,7 +109,6 @@ export default function HomePage() {
         <div className="relative z-[2]">
           <Hero />
           
-          {/* הכפתור המעודכן - תכלת עדין ויציב */}
           <div className="flex justify-center pb-12 -mt-8">
             <a 
               href="/luach.html" 
@@ -113,9 +123,7 @@ export default function HomePage() {
       </div>
 
       <About />
-
       <Courses courses={courses} onCourseRegister={handleCourseRegister} />
-
       <Testimonials />
       <Articles />
 
