@@ -14,12 +14,21 @@
       --whatsapp-green: #25D366;
     }
 
-    body {
+   body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       margin: 0;
       color: var(--text-color);
-      background: var(--bg-color);
+      /* כאן מגיע השינוי של הרקע הצבעוני */
+      background-image: 
+        radial-gradient(at 0% 100%, #b2ebf2 0, transparent 50%), 
+        radial-gradient(at 100% 100%, #e1bee7 0, transparent 50%), 
+        radial-gradient(at 0% 0%, #fff9c4 0, transparent 50%),   
+        radial-gradient(at 100% 0%, #f8bbd0 0, transparent 50%);
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #f5f5f5;
       line-height: 1.8;
+      /* סיום שינוי הרקע */
     }
 
     .urgency-bar {
