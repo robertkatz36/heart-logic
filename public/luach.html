@@ -151,6 +151,23 @@
     }
 
     @media (max-width: 700px) { .features-grid, .pricing { grid-template-columns: 1fr; } }
+.profile-photo-small {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: 15px; /* יוצר רווח בין התמונה לטקסט */
+  vertical-align: middle; /* שומר על התמונה בגובה של הטקסט */
+  display: inline-block;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
   </style>
 </head>
 <body>
@@ -171,7 +188,7 @@
       השמש דוברת אל חוש האדם<br>
       ושמחה ממעמקי הנפש<br>
       מתאחדת עם האור בראיה..."
-      <span class="quote-source">— רודולף שטיינר, לוח השנה לנפש (וורס 1), תרגום: אבישי גרשוני</span>
+      <span class="quote-source">— רודולף שטיינר, לוח השנה לנפש (וורס 1) </span>
     </div>
 
     <section>
@@ -227,7 +244,10 @@
     <a href="https://chat.whatsapp.com/IhOzWts0stDEUppnG1gDms" target="_blank" class="btn btn-whatsapp">הצטרפות לקבוצת הווצאפ (חינם)</a>
 
     <footer>
-      <p>לוגיקת הלב — רוברט כץ</p>
+     <div class="footer-container">
+  <img src="robert-katz.webp" alt="רוברט כץ" class="profile-photo-small">
+  <p style="margin: 0;">לוגיקת הלב — רוברט כץ</p>
+</div>
       <div style="margin-top: 15px;">
         <a href="http://www.heart-logic.com" style="color: var(--accent-color); margin: 0 10px; text-decoration: none;">לאתר הראשי</a>
         <a href="https://www.youtube.com/@HeartLogic" style="color: var(--accent-color); margin: 0 10px; text-decoration: none;">ערוץ היוטיוב</a>
